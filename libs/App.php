@@ -20,8 +20,8 @@ class App
 
         if (file_exists($controllerPath)) {
             require $controllerPath;
-
-            $controller = new $urlParams[0];
+            $controllerName = $urlParams[0] . 'Controller';
+            $controller = new $controllerName;
             $controller->loadModel($urlParams[0]);
 
             $nparam = sizeof($urlParams);

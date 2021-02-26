@@ -3,7 +3,7 @@
 abstract class Controller {
 
     function __construct(){
-
+        
     }
 
     abstract function render();
