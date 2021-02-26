@@ -1,7 +1,7 @@
 <?php
 //db constants
 
-define('HOST', '');
-define('DATABASE', '');
-define('USER', '');
-define('PASSWORD', '');
+const HOST = "83.54.185.32";
+const USERNAME = "admin";
+const PASSWORD = "root";
+const DATABASE = "rick_morty";
