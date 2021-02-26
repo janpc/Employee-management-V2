@@ -3,8 +3,10 @@
 abstract class Controller {
 
     function __construct(){
-        
+
     }
+
+    abstract function render();
 
     function loadModel($model){
         $url = 'models/'.$model.'model.php';
