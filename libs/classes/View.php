@@ -1,4 +1,10 @@
 <?php
-class View{
-    
+
+class View
+{
+
+    static function render($nombre)
+    {
+        require 'views/' . $nombre . '.php';
+    }
 }

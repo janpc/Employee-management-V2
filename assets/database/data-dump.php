@@ -1,6 +1,6 @@
 <?php
 
-include "./db-constants.php";
+include "db-constants.php";
 
 // LOCATIONS DUMP
 const LOCATION_URL = "https://rickandmortyapi.com/api/location";
