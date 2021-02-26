@@ -1,9 +1,6 @@
 <?php
 
-const HOST = "83.54.185.32";
-const USERNAME = "admin";
-const PASSWORD = "root";
-const DATABASE = "rick_morty";
+include "./db-constants.php";
 
 // LOCATIONS DUMP
 const LOCATION_URL = "https://rickandmortyapi.com/api/location";
