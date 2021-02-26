@@ -1,8 +1,11 @@
 <?php
-require_once('./config/constants.php');
-require_once(CLASSES . 'Controller.php');
-require_once(CLASSES . 'Model.php');
-require_once(CLASSES . 'View.php');
-require_once(LIBS . 'App.php');
+
+require 'libs/database.php';
+require 'libs/model.php';
+require 'libs/controller.php';
+require 'libs/view.php';
+require 'libs/app.php';
+
+require 'config/config.php';
 
 $app = new App();
