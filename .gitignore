@@ -1,1 +1,2 @@
-config/db.php
+assets/database/db-constants.php
+db-constants.php
