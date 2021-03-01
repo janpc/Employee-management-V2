@@ -3,8 +3,8 @@
 class View
 {
     public $data;
-    function render($nombre)
+    function render($name)
     {
-        require 'views/' . $nombre . '.php';
+        require VIEWS  . $name . '.php';
     }
 }

@@ -18,7 +18,7 @@ class App
             $controllerPath = 'controllers/' . $urlParams[0] . 'Controller' . '.php';
         }
 
-        if (file_exists($controllerPath)) {
+        if (file_exists($controllerPath) && $urlParams[0] != 'error') {
             require $controllerPath;
             $controllerName = $urlParams[0] . 'Controller';
             $controller = new $controllerName;
@@ -36,6 +36,8 @@ class App
                 }
                 $controller->{$urlParams[1]}($params);
             }
+        }else if ($urlParams[0] == 'error'){
+            new ErrorController();
         } else {
             $controller = new ErrorController();
         }
