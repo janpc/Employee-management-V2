@@ -14,9 +14,10 @@ class Database
         $this->db       = constant('DATABASE');
         $this->user     = constant('USERNAME');
         $this->password = constant('PASSWORD');
+        $this->connect();
     }
 
-    function connect()
+    private function connect()
     {
 
         try {
@@ -31,5 +32,9 @@ class Database
         } catch (PDOException $e) {
             print_r('Error connection: ' . $e->getMessage());
         }
+    }
+
+    function query() {
+
     }
 }
