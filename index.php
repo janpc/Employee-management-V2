@@ -6,6 +6,8 @@ require LIBS . 'classes/controller.php';
 require LIBS . 'classes/view.php';
 require LIBS . 'app.php';
 
+require CONTROLLERS . 'errorController.php';
+
 /* require 'config/config.php'; */
 
 $app = new App();

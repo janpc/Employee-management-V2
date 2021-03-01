@@ -4,8 +4,8 @@ class CharacterModel extends Model
 {
     function getAll()
     {
+        $database = $this->db->connect();
         try {
-            $database = $this->db->connect();
             $stmt = $database->prepare("SELECT * FROM `character_`");
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
@@ -14,21 +14,25 @@ class CharacterModel extends Model
 
             return $stmt->fetchAll();
         } catch (PDOException $e) {
-            //toDo
+            setcookie('error', $e->getMessage());
+            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
         }
     }
 
     function getById($id)
     {
         $database = $this->db->connect();
+
+        $stmt = $database->prepare("SELECT * FROM `character_` WHERE id=" . $id);
         try {
-            $stmt = $database->prepare("SELECT * FROM `character_` WHERE id=" . $id);
+            
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
 
             $data = $stmt->fetch();
         } catch (PDOException $e) {
-            //toDo
+            setcookie('error', $e->getMessage());
+            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
         }
 
         try {
@@ -37,7 +41,8 @@ class CharacterModel extends Model
             $stmt->execute();
             $data['origin_loc'] = $stmt->fetch();
         } catch (PDOException $e) {
-            //toDo
+            setcookie('error', $e->getMessage());
+            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
         }
 
         try {
@@ -46,7 +51,8 @@ class CharacterModel extends Model
             $stmt->execute();
             $data['last_loc'] = $stmt->fetch();
         } catch (PDOException $e) {
-            //toDo
+            setcookie('error', $e->getMessage());
+            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
         }
 
         $database = null;
@@ -69,7 +75,8 @@ class CharacterModel extends Model
             $stmt->execute();
             $database = null;
         } catch (PDOException $e) {
-            //toDo
+            setcookie('error', $e->getMessage());
+            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
         }
     }
 
@@ -89,7 +96,8 @@ class CharacterModel extends Model
             $stmt->execute();
             $database = null;
         } catch (PDOException $e) {
-            //toDo
+            setcookie('error', $e->getMessage());
+            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
         }
     }
 
@@ -100,7 +108,8 @@ class CharacterModel extends Model
         try {
             $stmt->execute();
         } catch (PDOException $e) {
-            //toDo
+            setcookie('error', $e->getMessage());
+            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
         }
 
         $database = null;

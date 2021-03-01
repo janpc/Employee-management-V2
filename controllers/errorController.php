@@ -1,10 +1,27 @@
 <?php
 
-class ErrorController extends Controller{
+class ErrorController extends Controller
+{
 
-    function __construct(){
+    function render()
+    {
+    }
+
+    function __construct()
+    {
+
         parent::__construct();
-        $this->view->mensaje = "Hay un error al cargar el recurso";
-        $this->view->render('errores/index');
+
+        if (isset($_COOKIE['error'])) {
+
+            $this->view->data = $_COOKIE["error"];
+
+            unset($_COOKIE['error']);
+            setcookie('error', null, -1, '/');
+        } else {
+            $this->view->data = 'Page not found';
+        }
+
+        $this->view->render('error/index');
     }
 }
