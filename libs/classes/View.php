@@ -2,8 +2,8 @@
 
 class View
 {
-
-    static function render($nombre)
+    public $data;
+    function render($nombre)
     {
         require 'views/' . $nombre . '.php';
     }

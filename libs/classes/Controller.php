@@ -3,9 +3,8 @@
 abstract class Controller {
 
     function __construct(){
-        
+        $this->view = new View;
     }
-
     abstract function render();
 
     function loadModel($model){
