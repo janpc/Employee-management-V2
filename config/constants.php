@@ -10,3 +10,4 @@ define("RESOURCES", $root . 'resources/');
 define("LIBS", $root . 'libs/');
 define("CLASSES", LIBS . 'classes/');
 define("ASSETS", $root . 'assets/');
+define("BASE_PATH", "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/');

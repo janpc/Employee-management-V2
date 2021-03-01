@@ -9,7 +9,7 @@ class Database
 
     public function __construct()
     {
-        require CONFIG . '/db-constants.php';
+        require CONFIG . 'db-constants.php';
         $this->host     = constant('HOST');
         $this->db       = constant('DATABASE');
         $this->user     = constant('USERNAME');
