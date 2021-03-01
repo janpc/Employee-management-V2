@@ -9,7 +9,7 @@ class App
         $urlParams = explode('/', $url);
 
         if (empty($urlParams[0])) {
-            require CONTROLLERS . 'index.php';
+            require CONTROLLERS . 'indexController.php';
             $controller = new IndexController();
             $controller->render();
             $controller->loadModel('index');
@@ -25,9 +25,9 @@ class App
             $controller->loadModel($urlParams[0]);
 
             $nparam = sizeof($urlParams);
-            if($nparam == 1) {
+            if ($nparam == 1) {
                 $controller->render();
-            } else if($nparam == 2) {
+            } else if ($nparam == 2) {
                 $controller->{$urlParams[1]}();
             } else {
                 $params = [];

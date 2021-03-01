@@ -9,6 +9,7 @@ class Database
 
     public function __construct()
     {
+        require ASSETS . 'database/db-constants.php';
         $this->host     = constant('HOST');
         $this->db       = constant('DATABASE');
         $this->user     = constant('USERNAME');
