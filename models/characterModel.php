@@ -23,7 +23,7 @@ class CharacterModel extends Model
     {
         $database = $this->db->connect();
 
-        $stmt = $database->prepare("SELECT * FROM `character_` WHERE id=" . $id);
+        $stmt = $database->prepare("SELECT * FROM `character_` WHERE id=$id");
         try {
             
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -104,7 +104,7 @@ class CharacterModel extends Model
     function delete($id)
     {
         $database = $this->db->connect();
-        $stmt = $database->prepare("DELETE FROM character_ WHERE id=" . $id);
+        $stmt = $database->prepare("DELETE FROM character_ WHERE id=$id");
         try {
             $stmt->execute();
         } catch (PDOException $e) {

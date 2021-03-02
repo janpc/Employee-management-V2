@@ -37,9 +37,9 @@ class App
                 $controller->{$urlParams[1]}($params);
             }
         }else if ($urlParams[0] == 'error'){
-            new ErrorController();
+            ErrorController::renderError('page not found');
         } else {
-            $controller = new ErrorController();
+            ErrorController::renderError('page not found');
         }
     }
 }
