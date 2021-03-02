@@ -25,7 +25,6 @@ class CharacterModel extends Model
 
         $stmt = $database->prepare("SELECT * FROM `character_` WHERE id=" . $id);
         try {
-            
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
 
@@ -74,6 +73,7 @@ class CharacterModel extends Model
             $stmt->bindParam(':last_loc_id', $params[5]);
             $stmt->execute();
             $database = null;
+            return $params;
         } catch (PDOException $e) {
             setcookie('error', $e->getMessage());
             header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
