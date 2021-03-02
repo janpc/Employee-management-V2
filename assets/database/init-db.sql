@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS rick_morty;
 CREATE DATABASE IF NOT EXISTS rick_morty;
 USE rick_morty;
 
-DROP TABLE IF EXISTS character_, location, episode, travel, character_episode, character_travel;
+DROP TABLE IF EXISTS character_, location, episode, travel, character_episode, character_travel, user;
 
 CREATE TABLE location (
     id 			SMALLINT 		NOT NULL	AUTO_INCREMENT,
@@ -60,5 +60,13 @@ CREATE TABLE character_travel (
 	travel_id		SMALLINT	NOT NULL,
 	FOREIGN KEY (character_id)	REFERENCES character_ (id)	ON DELETE CASCADE,
    	FOREIGN KEY (travel_id)		REFERENCES travel (id) 		ON DELETE CASCADE,
+   	PRIMARY KEY (id)
+);
+
+CREATE TABLE user (
+	id				INT			NOT NULL	AUTO_INCREMENT,
+	usename	        VARCHAR(30)	NOT NULL,
+	password		VARCHAR(30)	NOT NULL,
+	email           VARCHAR(40) NOT NULL UNIQUE,
    	PRIMARY KEY (id)
 );

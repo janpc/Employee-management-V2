@@ -7,21 +7,9 @@ class ErrorController extends Controller
     {
     }
 
-    function __construct()
-    {
-
-        parent::__construct();
-
-        if (isset($_COOKIE['error'])) {
-
-            $this->view->data = $_COOKIE["error"];
-
-            unset($_COOKIE['error']);
-            setcookie('error', null, -1, '/');
-        } else {
-            $this->view->data = 'Page not found';
-        }
-
-        $this->view->render('error/index');
+    static function renderError($message) {
+        $errorView = new View;
+        $errorView->data = $message;
+        $errorView->render('error/index');
     }
 }

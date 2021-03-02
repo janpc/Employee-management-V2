@@ -7,6 +7,8 @@ require LIBS . 'classes/View.php';
 require LIBS . 'App.php';
 require LIBS . 'Api.php';
 
+require UTIL . 'Converter.php';
+
 require CONTROLLERS . 'errorController.php';
 
 /* require 'config/config.php'; */
