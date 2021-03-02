@@ -23,6 +23,7 @@ class EpisodeController extends Controller
         }
     }
 
+    //TODO in API
     function add($params)
     {
         $this->view->data = $this->model->insert($params);
@@ -33,6 +34,7 @@ class EpisodeController extends Controller
         }
     }
 
+    //TODO in API
     function update($params)
     {
         $this->view->data = $this->model->update($params);
@@ -43,6 +45,7 @@ class EpisodeController extends Controller
         }
     }
 
+    //TODO in API
     function delete($params)
     {
         $this->view->data = $this->model->delete($params[0]);

@@ -1,41 +1,29 @@
 <?php
 
+require CONFIG . 'db-constants.php';
+
 class Database
 {
-    private $host;
-    private $db;
-    private $user;
-    private $password;
 
-    public function __construct()
-    {
-        require CONFIG . 'db-constants.php';
-        $this->host     = constant('HOST');
-        $this->db       = constant('DATABASE');
-        $this->user     = constant('USERNAME');
-        $this->password = constant('PASSWORD');
-        $this->connect();
+    public static function getPDO() {
+        return self::connect();
     }
 
-    public function connect()
+    static private function connect()
     {
 
         try {
-            $connection = "mysql:host=" . $this->host . ";dbname=" . $this->db;
+            $connection = "mysql:host=" . HOST . ";dbname=" . DATABASE;
             $options = [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_EMULATE_PREPARES   => false,
             ];
-            $pdo = new PDO($connection, $this->user,$this->password, $options);
+            $pdo = new PDO($connection, USERNAME, PASSWORD, $options);
 
             return $pdo;
         } catch (PDOException $e) {
-            setcookie('error', $e->getMessage());
-            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
+            ErrorController::renderError('Could not connect to database');
+            die();
         }
-    }
-
-    function query() {
-
     }
 }
