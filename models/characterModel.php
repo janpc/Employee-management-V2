@@ -1,117 +1,42 @@
 <?php
+require MODELS . 'entity/Character.php';
+require MODELS . 'entity/CharacterExt.php';
+require MODELS . 'entity/Location.php';
 
 class CharacterModel extends Model
 {
-    function getAll()
+
+    public function __construct()
     {
-        $database = $this->db->connect();
-        try {
-            $stmt = $database->prepare("SELECT * FROM `character_`");
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $stmt->execute();
-
-            $database = null;
-
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            setcookie('error', $e->getMessage());
-            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
-        }
+        parent::__construct('character_', 'Character');
     }
 
-    function getById($id)
+    function getExtendedById($id)
     {
-        $database = $this->db->connect();
-
-        $stmt = $database->prepare("SELECT * FROM `character_` WHERE id=" . $id);
+        $stmt = $this->database->prepare("SELECT c.name, c.status, c.species, c.gender, c.id, 
+            l_l.dimension as resid_dimension, l_l.loc_type as resid_loc_type,
+            l_l.name as resid_name, l_l.id as resid_id,
+            o_l.dimension as origin_dimension, o_l.loc_type as origin_loc_type,
+            o_l.name as origin_name, o_l.id as origin_id
+            FROM character_ c
+            INNER JOIN location l_l ON l_l.id = c.last_loc_id
+            INNER JOIN location o_l ON o_l.id = c.origin_loc_id 
+            WHERE c.id = $id");
         try {
-            
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
-
             $data = $stmt->fetch();
+
+            $originLoc = new Location($data['origin_id'], $data['origin_name'], $data['origin_loc_type'], $data['origin_dimension']);
+            $lastLoc = new Location($data['resid_id'], $data['resid_name'], $data['resid_loc_type'], $data['resid_dimension']);
+
+            $character = new CharacterExt(
+                $data['id'], $data['name'], $data['species'], $data['gender'], $originLoc, $lastLoc
+            );
+
         } catch (PDOException $e) {
-            setcookie('error', $e->getMessage());
-            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
+            return false;
         }
-
-        try {
-            $stmt = $database->prepare("SELECT * FROM `location` WHERE id=" . $data['origin_loc_id']);
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $stmt->execute();
-            $data['origin_loc'] = $stmt->fetch();
-        } catch (PDOException $e) {
-            setcookie('error', $e->getMessage());
-            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
-        }
-
-        try {
-            $stmt = $database->prepare("SELECT * FROM `location` WHERE id=" . $data['last_loc_id']);
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $stmt->execute();
-            $data['last_loc'] = $stmt->fetch();
-        } catch (PDOException $e) {
-            setcookie('error', $e->getMessage());
-            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
-        }
-
-        $database = null;
-
-        return $data;
-    }
-
-    function insert($params)
-    {
-        $database = $this->db->connect();
-        $stmt = $database->prepare("INSERT INTO character_ (`name`, `status`, `species`, `gender`, `origin_loc_id`, `last_loc_id`) VALUES (:n, :s , :species, :gender, :origin_loc_id, :last_loc_id)");
-
-        try {
-            $stmt->bindParam(':n', $params[0]);
-            $stmt->bindParam(':s', $params[1]);
-            $stmt->bindParam(':species', $params[2]);
-            $stmt->bindParam(':gender', $params[3]);
-            $stmt->bindParam(':origin_loc_id', $params[4]);
-            $stmt->bindParam(':last_loc_id', $params[5]);
-            $stmt->execute();
-            $database = null;
-        } catch (PDOException $e) {
-            setcookie('error', $e->getMessage());
-            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
-        }
-    }
-
-    function update($params)
-    {
-        $database = $this->db->connect();
-        $stmt = $database->prepare("UPDATE character_ SET `name` = :n, `status` = :s,`species` = :species, `gender` = :gender, `origin_loc_id` = :origin_loc_id, `last_loc_id` = :last_loc_id WHERE id=:id");
-
-        try {
-            $stmt->bindParam(':n', $params[1]);
-            $stmt->bindParam(':s', $params[2]);
-            $stmt->bindParam(':species', $params[3]);
-            $stmt->bindParam(':gender', $params[4]);
-            $stmt->bindParam(':origin_loc_id', $params[5]);
-            $stmt->bindParam(':last_loc_id', $params[6]);
-            $stmt->bindParam(':id', $params[0]);
-            $stmt->execute();
-            $database = null;
-        } catch (PDOException $e) {
-            setcookie('error', $e->getMessage());
-            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
-        }
-    }
-
-    function delete($id)
-    {
-        $database = $this->db->connect();
-        $stmt = $database->prepare("DELETE FROM character_ WHERE id=" . $id);
-        try {
-            $stmt->execute();
-        } catch (PDOException $e) {
-            setcookie('error', $e->getMessage());
-            header('Location: ' . "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/' . "error");
-        }
-
-        $database = null;
+        return $character;
     }
 }

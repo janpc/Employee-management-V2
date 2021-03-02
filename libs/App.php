@@ -2,12 +2,8 @@
 
 class App
 {
-    function __construct()
+    function __construct($urlParams)
     {
-        $url = isset($_GET['url']) ? $_GET['url'] : null;
-        $url = rtrim($url, '/');
-        $urlParams = explode('/', $url);
-
         if (empty($urlParams[0])) {
             require CONTROLLERS . 'indexController.php';
             $controller = new IndexController();
@@ -37,9 +33,9 @@ class App
                 $controller->{$urlParams[1]}($params);
             }
         }else if ($urlParams[0] == 'error'){
-            new ErrorController();
+            ErrorController::renderError('page not found');
         } else {
-            $controller = new ErrorController();
+            ErrorController::renderError('page not found');
         }
     }
 }

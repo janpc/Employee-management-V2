@@ -1,2 +1,3 @@
 <?php
-// episode details
+
+print_r($this->data);
