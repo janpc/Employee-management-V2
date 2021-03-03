@@ -6,11 +6,11 @@ class Travel {
     public Location $originLoc;
     public Location $destinationLoc;
 
-    public function __construct($id, $episodeId, $originLoc, $destinationLoc)
+    /* public function __construct($id, $episodeId, $originLoc, $destinationLoc)
     {
         $this->id = $id;
         $this->episodeId = $episodeId;
         $this->originLoc = $originLoc;
         $this->destinationLoc = $destinationLoc;
-    }
+    } */
 }

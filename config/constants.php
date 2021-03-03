@@ -1,6 +1,6 @@
 <?php
 
-$root = $_SERVER["DOCUMENT_ROOT"] . '/employee-management-v2/';
+$root = $_SERVER["DOCUMENT_ROOT"] . '/employeeManagement2/employee-management-v2/';
 
 define("CONTROLLERS", $root . 'controllers/');
 define("CONFIG", $root . 'config/');

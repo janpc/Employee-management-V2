@@ -19,7 +19,6 @@ abstract class Model
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         try {
             $stmt->execute();
-            $this->database = null;
             $data = $stmt->fetchAll();
             $classData = array();
             foreach ($data as $register) {
