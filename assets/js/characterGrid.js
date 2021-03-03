@@ -3,28 +3,31 @@ const basePath = "http://localhost/employee-management-v2";
 const init = () => {
   axios.get(`${basePath}/api/character`).then(({ data }) => {
     $("#jsGrid").jsGrid({
-      width: "90%",
-      height: "60vh",
+      width: "85vw",
+      height: "65vh",
       inserting: true,
       editing: true,
       sorting: true,
       paging: true,
+      pageSize: 15,
+      pageButtonCount: 8,
       data,
+
       fields: [
-        { name: "id", type: "text", width: 40, readOnly: true },
-        { name: "name", type: "text", width: 40, validate: "required" },
+        { name: "id", type: "number", width: 20, readOnly: true},
+        { name: "name", type: "text", width: 60, validate: "required" },
         { name: "status", type: "text", width: 40, validate: "required" },
         { name: "species", type: "text", width: 40, validate: "required" },
         { name: "gender", type: "text", width: 40, validate: "required" },
         {
           name: "originLocId",
-          type: "select",
+          type: "number",
           width: 40,
           validate: "required",
         },
         {
           name: "lastLocId",
-          type: "select",
+          type: "number",
           width: 40,
           validate: "required",
         },
