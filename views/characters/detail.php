@@ -1,3 +1,4 @@
+<?php $_SESSION["admin"]=true ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +23,7 @@
                 <label for="origin_loc">Origin:</label>
                 <div>
                     <a type="text" href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/location/details/' . $this->data->originLoc->id ?>">></a>
-                    <select name="origin_loc" id="origin_loc">
+                    <select name="origin_loc" id="origin_loc" <?php echo isset($_SESSION["admin"])?  'disabled':'';?>>
                         <option value="earth">earth</option>
                     </select>
                 </div>
