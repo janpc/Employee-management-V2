@@ -1,16 +1,15 @@
 <?php
 
+require MODELS . 'userModel.php';
+
 class LogginController extends Controller
 {
-    function loadModel($model){
-        $path = 'models/'.$model.'Model.php';
+    private $userModel;
 
-        if(file_exists($path)){
-            require $path;
-            
-            $modelName = $model.'Model';
-            $this->model = new $modelName();
-        }
+    public function __construct()
+    {
+        parent::__construct();
+        $this->userModel = new UserModel;
     }
 
     function render()
@@ -18,25 +17,32 @@ class LogginController extends Controller
         $this->view->render('loggin/index');
     }
 
-    function loggin(){
-        $isLogged = $this->model->compare($_POST['email'], $_POST['password']);
-
-        if($isLogged === true){
-            header('Location: ' . BASE_PATH . 'character');
-        }else{
-            header('Location: ./');
+    static function userIsLogged() {
+        if($_COOKIE['userId']) {
+            return true;
+        } else {
+            return false;
         }
     }
 
-    function logout(){
-        $isOut = $this->model->out();
+    function loggin()
+    {
+        $user = $this->userModel->getByEmail($_POST['email']);
 
-        if($isOut){
-            header('Location: '. BASE_PATH . 'loggin');
-        }else{
-            header('Location: ./');
+        if ($user) {
+            $isPasswordCorrect = password_verify($_POST['password'], $user->password);
+            if ($isPasswordCorrect) {
+                setcookie("userId", $user->id, time() + 600, '/');
+                header('Location: ' . BASE_PATH . 'character');
+            } else {
+                $this->view->render('loggin/index');
+            }
         }
     }
 
-
+    function logout()
+    {
+        unset($_COOKIE['userId']);
+        $this->view->render('loggin/index');
+    }
 }

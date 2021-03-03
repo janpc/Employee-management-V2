@@ -69,9 +69,16 @@ const init = () => {
       ],
 
       onItemInserting: function ({ item }) {
-        data = JSON.stringify(item);
-        $.ajax({
-          type: "POST",
+        const data = {};
+
+        $.each(item, function (key, value) {
+          if (key != "id") {
+            data[key] = value;
+          }
+        });
+
+        axios({
+          method: "POST",
           url: `${basePath}/api/character`,
           data: data,
         }).then(()=>{

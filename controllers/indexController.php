@@ -1,15 +1,15 @@
 <?php
 
-class IndexController extends Controller{
-    function __construct(){
+class IndexController extends Controller
+{
+
+    function __construct()
+    {
         parent::__construct();
     }
 
-    function render(){
+    function render()
+    {
         $this->view->render('index/index');
-    }
-
-    function saludo(){
-        echo "<p>Hola a todos<p>";
     }
 }
