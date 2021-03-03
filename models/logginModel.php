@@ -5,10 +5,9 @@ class LogginModel extends Model
 
     function compare(string $userEmail, string $password)
     {
-        try{
+        try {
             $user = $this->db->connect()->query("SELECT * FROM user WHERE email='" . $userEmail . "'")->fetch();
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             setcookie('error', $e->getMessage());
             header('Location: ' . BASE_PATH . "error");
         }
@@ -32,19 +31,20 @@ class LogginModel extends Model
     function out(): bool
     {
         unset($_COOKIE['userId']);
-        if(isset($_COOKIE['userId'])){
+        if (isset($_COOKIE['userId'])) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
 
-    function signIn($params){
+    function signIn($params)
+    {
         //toDo
     }
 
-    function signOut($id){
+    function signOut($id)
+    {
         //toDo
     }
 }
-

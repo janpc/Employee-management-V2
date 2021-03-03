@@ -23,7 +23,7 @@ class CharacterModel extends Model
             INNER JOIN location l_l ON l_l.id = c.last_loc_id
             INNER JOIN location o_l ON o_l.id = c.origin_loc_id 
             WHERE c.id = $id");
-            
+
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
             $data = $stmt->fetch();
@@ -32,9 +32,13 @@ class CharacterModel extends Model
             $lastLoc = new Location($data['resid_id'], $data['resid_name'], $data['resid_loc_type'], $data['resid_dimension']);
 
             $character = new CharacterExt(
-                $data['id'], $data['name'], $data['species'], $data['gender'], $originLoc, $lastLoc
+                $data['id'],
+                $data['name'],
+                $data['species'],
+                $data['gender'],
+                $originLoc,
+                $lastLoc
             );
-
         } catch (PDOException $e) {
             return false;
         }

@@ -29,13 +29,13 @@ class App
         $controller = Controller::getController($this->urlParams[0]);
         if ($controller) {
             array_shift($this->urlParams);
-            $defaultAction = empty($this->urlParams[0]) ? 'render' : $this->urlParams[0];
+            $scriptAction = empty($this->urlParams[0]) ? 'render' : $this->urlParams[0];
             array_shift($this->urlParams);
-            $action = $api ? 'api' : $defaultAction;
+            $action = $api ? 'api' : $scriptAction;
             $controller->$action($this->urlParams, $this->urlQueries);
+
         } else {
             ErrorDisplayer::show('page not found');
         }
     }
-
 }

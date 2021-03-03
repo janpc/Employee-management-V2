@@ -6,7 +6,6 @@ require LIBS . 'classes/Controller.php';
 require LIBS . 'classes/View.php';
 require LIBS . 'classes/Error.php';
 require LIBS . 'App.php';
-require LIBS . 'Api.php';
 
 require UTIL . 'Converter.php';
 
