@@ -9,8 +9,7 @@ class Character {
     public $originLocId;
     public $lastLocId; 
 
-    /*
-    public function __construct($id, $name, $species, $gender, $originLocId, $lastLocId) 
+    public function __construct($id = -1, $name = "", $species = "", $gender = "", $originLocId = -1, $lastLocId = -1) 
     {
         $this->id = $id;
         $this->name = $name;
@@ -19,6 +18,5 @@ class Character {
         $this->originLocId = $originLocId;
         $this->lastLocId = $lastLocId;
     }
-    */
 
 }

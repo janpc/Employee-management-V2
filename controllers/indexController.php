@@ -8,8 +8,4 @@ class IndexController extends Controller{
     function render(){
         $this->view->render('index/index');
     }
-
-    function saludo(){
-        echo "<p>Hola a todos<p>";
-    }
 }

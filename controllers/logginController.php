@@ -8,25 +8,25 @@ class LogginController extends Controller
         $this->view->render('loggin/index');
     }
 
-    function loggin(){
+    function loggin()
+    {
         $isLogged = $this->model->compare($_POST['email'], $_POST['password']);
 
-        if($isLogged === true){
+        if ($isLogged === true) {
             header('Location: ' . BASE_PATH . 'character');
-        }else{
+        } else {
             header('Location: ./');
         }
     }
 
-    function logout(){
+    function logout()
+    {
         $isOut = $this->model->out();
 
-        if($isOut){
-            header('Location: '. BASE_PATH . 'loggin');
-        }else{
+        if ($isOut) {
+            header('Location: ' . BASE_PATH . 'loggin');
+        } else {
             header('Location: ./');
         }
     }
-
-
 }

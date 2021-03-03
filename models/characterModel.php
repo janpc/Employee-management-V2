@@ -13,7 +13,8 @@ class CharacterModel extends Model
 
     function getExtendedById($id)
     {
-        $stmt = $this->database->prepare("SELECT c.name, c.status, c.species, c.gender, c.id, 
+        try {
+            $stmt = $this->database->prepare("SELECT c.name, c.status, c.species, c.gender, c.id, 
             l_l.dimension as resid_dimension, l_l.loc_type as resid_loc_type,
             l_l.name as resid_name, l_l.id as resid_id,
             o_l.dimension as origin_dimension, o_l.loc_type as origin_loc_type,
@@ -22,7 +23,7 @@ class CharacterModel extends Model
             INNER JOIN location l_l ON l_l.id = c.last_loc_id
             INNER JOIN location o_l ON o_l.id = c.origin_loc_id 
             WHERE c.id = $id");
-        try {
+            
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
             $data = $stmt->fetch();

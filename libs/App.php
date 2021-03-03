@@ -1,41 +1,41 @@
 <?php
 
+require UTIL . 'Array.php';
+
 class App
 {
-    function __construct($urlParams)
+    private $urlParams;
+    private $urlQueries;
+
+    public function __construct()
     {
-        if (empty($urlParams[0])) {
-            require CONTROLLERS . 'indexController.php';
-            $controller = new IndexController();
+        parse_str($_SERVER['QUERY_STRING'], $this->urlQueries);
+        $url =  rtrim($this->urlQueries['url'], '/');
+        $this->urlParams = explode('/', $url);
+        unset($this->urlQueries['url']);
+    }
+
+    public function enroute() {
+        if (empty($this->urlParams[0])) {
+            $controller = Controller::getController('index');
             $controller->render();
-            $controller->loadModel('index');
-            return false;
-        } else {
-            $controllerPath = 'controllers/' . $urlParams[0] . 'Controller' . '.php';
+            return;
+        } 
+        $api = false;
+        if($this->urlParams[0] == 'api') {
+            $api = true;
+            array_shift($this->urlParams);
         }
-
-        if (file_exists($controllerPath) && $urlParams[0] != 'error') {
-            require $controllerPath;
-            $controllerName = $urlParams[0] . 'Controller';
-            $controller = new $controllerName;
-            $controller->loadModel($urlParams[0]);
-
-            $nparam = sizeof($urlParams);
-            if ($nparam == 1) {
-                $controller->render();
-            } else if ($nparam == 2) {
-                $controller->{$urlParams[1]}();
-            } else {
-                $params = [];
-                for ($i = 2; $i < $nparam; $i++) {
-                    array_push($params, $urlParams[$i]);
-                }
-                $controller->{$urlParams[1]}($params);
-            }
-        }else if ($urlParams[0] == 'error'){
-            ErrorController::renderError('page not found');
+        $controller = Controller::getController($this->urlParams[0]);
+        if ($controller) {
+            array_shift($this->urlParams);
+            $defaultAction = empty($this->urlParams[0]) ? 'render' : $this->urlParams[0];
+            array_shift($this->urlParams);
+            $action = $api ? 'api' : $defaultAction;
+            $controller->$action($this->urlParams, $this->urlQueries);
         } else {
-            ErrorController::renderError('page not found');
+            ErrorDisplayer::show('page not found');
         }
     }
+
 }

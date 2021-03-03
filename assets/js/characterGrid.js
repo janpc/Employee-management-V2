@@ -32,11 +32,11 @@ const init = () => {
       ],
 
       onItemInserting: function ({ item }) {
-        const data = [];
+        const data = {};
 
         $.each(item, function (key, value) {
           if (key != "id") {
-            data.push(value);
+            data[key] = value;
           }
         });
 

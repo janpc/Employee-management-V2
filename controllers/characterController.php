@@ -1,72 +1,54 @@
 <?php
 
+require MODELS . 'characterModel.php';
+
 class CharacterController extends Controller
 {
+    private $characterModel;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->characterModel = new CharacterModel;
+    }
+
     function render()
     {
-        $this->view->data = $this->model->getAll();
+        $this->view->data = $this->characterModel->getAll();
         if ($this->view->data) {
             $this->view->render('characters/index');
         } else {
-            ErrorController::renderError('Could not get characters');
+            ErrorDisplayer::show('Could not get characters');
         }
     }
 
     function details($params)
     {
-        $this->view->data = $this->model->getExtendedById($params[0]);
+        $this->view->data = $this->characterModel->getExtendedById($params[0]);
         if ($this->view->data) {
             $this->view->render('characters/detail');
         } else {
-            ErrorController::renderError('Could not get character');
+            ErrorDisplayer::show('Could not get character');
         }
     }
 
-    //TODO in API
-    function add($params)
+    function api($params = null)
     {
-        $character = new Character;
-        $character->name = 'Peter Smith';
-        $character->species = 'Human';
-        $character->gender = 'Male';
-        $character->originLocId = 3;
-        $character->lastLocId = 3;
-        $this->model->insert($character);
-        $this->view->data = $this->model->getAll();
-        $this->view->render('characters/index');
-    }
-
-    //TODO in API
-    function update($params)
-    {
-        $obj = new stdClass;
-        $this->view->data = $this->model->update($obj);
-        //$this->view->render('characters/index');
-    }
-
-    //TODO in API
-    function delete($params)
-    {
-        $this->view->data = $this->model->delete($params[0]);
-        $this->view->render('characters/index');
-    }
-
-    function api( $params = null ){
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'GET': {
-                    if($params==null){
-                        $data = $this->model->getAll();
+                    if ($params == null) {
+                        $data = $this->characterModel->getAll();
                         echo json_encode($data);
-                    }else{
-                        $data = $this->model->getById($params[0]);
+                    } else {
+                        $data = $this->characterModel->getById($params[0]);
                         echo json_encode($data);
                     }
                     break;
                 }
             case 'POST': {
                     if (isset($_POST)) {
-                        $params = json_decode(file_get_contents("php://input"), true);
-                        $data = $this->model->insert($params);
+                        $character = json_decode(file_get_contents("php://input"), true);
+                        $data = $this->characterModel->insert($character);
                         echo json_encode($data);
                         http_response_code(201);
                     } else {
@@ -77,13 +59,13 @@ class CharacterController extends Controller
             case 'PUT': {
                     $employeeData = file_get_contents('php://input');
                     $params = json_decode($employeeData, true);
-                    $this->model->update($params);
+                    $this->characterModel->update($params);
                     http_response_code(204);
                     break;
                 }
             case 'DELETE': {
                     if ($params != null) {
-                        $this->model->delete($params[0]);
+                        $this->characterModel->delete($params[0]);
                         http_response_code(204);
                     }
                     break;
