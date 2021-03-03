@@ -65,7 +65,7 @@ class CharacterController extends Controller
                 }
             case 'POST': {
                     if (isset($_POST)) {
-                        $params = json_decode(file_get_contents("php://input"), true);
+                        $params = (object)json_decode(file_get_contents("php://input"), true);
                         $data = $this->model->insert($params);
                         echo json_encode($data);
                         http_response_code(201);
@@ -76,7 +76,7 @@ class CharacterController extends Controller
                 }
             case 'PUT': {
                     $employeeData = file_get_contents('php://input');
-                    $params = json_decode($employeeData, true);
+                    $params = (object)json_decode($employeeData, true);
                     $this->model->update($params);
                     http_response_code(204);
                     break;

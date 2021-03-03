@@ -69,32 +69,26 @@ const init = () => {
       ],
 
       onItemInserting: function ({ item }) {
-        const data = [];
-
-        $.each(item, function (key, value) {
-          if (key != "id") {
-            data.push(value);
-          }
-        });
-
-        axios({
-          method: "POST",
+        data = JSON.stringify(item);
+        $.ajax({
+          type: "POST",
           url: `${basePath}/api/character`,
           data: data,
+        }).then(()=>{
+          $("#jsGrid").jsGrid("refresh");
         });
       },
 
       onItemUpdating: function ({ item }) {
-        const data = [];
-
-        $.each(item, function (key, value) {
-          data.push(value);
-        });
-
+        data = JSON.stringify(item);
         axios({
           method: "PUT",
           url: `${basePath}/api/character`,
           data: data,
+        }).then((response)=>{
+          if(response.status != 204){
+            $("#jsGrid").jsGrid("refresh");
+          }
         });
       },
 
@@ -102,6 +96,14 @@ const init = () => {
         axios({
           method: "DELETE",
           url: `${basePath}/api/character/${item.id}`,
+        }).then(()=>{
+          $("#jsGrid").jsGrid("refresh");
+        });
+      },
+
+      onRefreshing: function ({ grid }) {
+        axios.get(`${basePath}/api/character`).then(({ data }) => {
+          grid.data = data;
         });
       },
 
