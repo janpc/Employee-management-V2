@@ -31,7 +31,7 @@ class CharacterModel extends Model
             $lastLoc = new Location($data['resid_id'], $data['resid_name'], $data['resid_loc_type'], $data['resid_dimension']);
 
             $character = new CharacterExt(
-                $data['id'], $data['name'], $data['species'], $data['gender'], $originLoc, $lastLoc
+                $data['id'], $data['name'], $data['status'], $data['species'], $data['gender'], $originLoc, $lastLoc
             );
 
         } catch (PDOException $e) {

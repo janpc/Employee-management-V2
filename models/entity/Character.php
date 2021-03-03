@@ -4,6 +4,7 @@
 class Character {
     public Int $id;
     public $name;
+    public $status;
     public $species;
     public $gender;
     public $originLocId;
