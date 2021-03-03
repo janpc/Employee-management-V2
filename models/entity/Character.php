@@ -2,15 +2,15 @@
 
 class Character
 {
-    public Int $id;
-    public $name;
-    public $status;
-    public $species;
-    public $gender;
-    public $originLocId;
-    public $lastLocId;
+    public ?int $id;
+    public ?string $name;
+    public ?string $status;
+    public ?string $species;
+    public ?string $gender;
+    public ?int $originLocId;
+    public ?int $lastLocId;
 
-    public function __construct($id = -1, $name = "", $species = "", $gender = "", $originLocId = -1, $lastLocId = -1)
+    public function __construct($id = null, $name = null, $species = null, $gender = null, $originLocId = null, $lastLocId = null)
     {
         $this->id = $id;
         $this->name = $name;

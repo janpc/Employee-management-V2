@@ -2,6 +2,7 @@
 require MODELS . 'entity/Character.php';
 require MODELS . 'entity/CharacterExt.php';
 require MODELS . 'entity/Location.php';
+require MODELS . 'entity/Episode.php';
 
 class CharacterModel extends Model
 {
@@ -21,22 +22,58 @@ class CharacterModel extends Model
             o_l.name as origin_name, o_l.id as origin_id
             FROM character_ c
             INNER JOIN location l_l ON l_l.id = c.last_loc_id
-            INNER JOIN location o_l ON o_l.id = c.origin_loc_id 
+            LEFT OUTER JOIN location o_l ON o_l.id = c.origin_loc_id 
             WHERE c.id = $id");
 
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
             $data = $stmt->fetch();
 
+            $episodesIn = $this->getEpisodesForCharacter($id);
+
             $originLoc = new Location($data['origin_id'], $data['origin_name'], $data['origin_loc_type'], $data['origin_dimension']);
             $lastLoc = new Location($data['resid_id'], $data['resid_name'], $data['resid_loc_type'], $data['resid_dimension']);
 
             $character = new CharacterExt(
-                $data['id'], $data['name'], $data['status'], $data['species'], $data['gender'], $originLoc, $lastLoc
+                $data['id'], $data['name'], $data['status'], $data['species'], $data['gender'], $originLoc, $lastLoc, $episodesIn
             );
         } catch (PDOException $e) {
             return false;
         }
         return $character;
+    }
+
+    function getEpisodesForCharacter($id) {
+        $stmt = $this->database->prepare("SELECT e.*
+        FROM character_ c
+        INNER JOIN character_episode ce ON ce.character_id = c.id 
+        INNER JOIN episode e ON e.id = ce.episode_id 
+        WHERE c.id = $id");
+
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $episodesIn = $stmt->fetchAll();
+
+        return array_map(function($episode) {
+            return new Episode($episode['id'], $episode['air_date'], $episode['season_no'], $episode['episode_no']);
+        }, $episodesIn);
+
+    }
+
+    function getTravelsForCharacter($id) {
+
+        $stmt = $this->database->prepare("SELECT t.*
+        FROM character_ c
+        INNER JOIN character_travel ct ON ct.character_id = c.id 
+        INNER JOIN travel t ON t.id = ct.travel_id 
+        WHERE c.id = $id");
+
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $travelsIn = $stmt->fetchAll();
+
+        return array_map(function($travel) {
+            return array();
+        }, $travelsIn);
     }
 }

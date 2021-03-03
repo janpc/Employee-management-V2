@@ -2,12 +2,12 @@
 
 class Location
 {
-    public Int $id;
-    public String $name;
-    public String $locType;
-    public String $dimension;
+    public ?int $id;
+    public ?string $name;
+    public ?string $locType;
+    public ?string $dimension;
 
-    public function __construct($id = -1, $name = "", $locType = "", $dimension = "")
+    public function __construct($id = null, $name = null, $locType = null, $dimension = null)
     {
         $this->id = $id;
         $this->name = $name;

@@ -7,7 +7,7 @@ class SessionController
         }
     }
 
-    static function userIsLogged()
+    private static function userIsLogged()
     {
         return isset($_COOKIE["userId"]);
     }

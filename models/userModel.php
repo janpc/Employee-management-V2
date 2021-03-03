@@ -21,7 +21,6 @@ class UserModel extends Model
                 $data['id'], $data['usename'], $data['password'], $data['email']
             );
         } catch (PDOException $e) {
-            print_r($e);
             return false;
         }
         return $user;
