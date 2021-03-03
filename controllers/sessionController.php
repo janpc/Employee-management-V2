@@ -1,17 +1,14 @@
 <?php
-class SessionController extends Controller
+class SessionController
 {
-
-    function __construct()
-    {
-        if ($userId = $_COOKIE["userEmail"]) {
-            return true;
+    static function checkSession() {
+        if(!self::userIsLogged() && $_SERVER['QUERY_STRING'] !== "url=loggin") {
+            header('Location: ' . BASE_PATH . 'loggin');
         }
-
-        return false;
     }
 
-    function render()
+    static function userIsLogged()
     {
+        return isset($_COOKIE["userId"]);
     }
 }

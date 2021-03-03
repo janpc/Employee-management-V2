@@ -1,7 +1,5 @@
 <?php
 
-require UTIL . 'Array.php';
-
 class App
 {
     private $urlParams;
