@@ -1,12 +1,16 @@
 <?php
 
-class LogginModel extends Model
+class LogginModel
 {
+    function __construct()
+    {
+        $this->db = Database::getPDO();
+    }
 
     function compare(string $userEmail, string $password)
     {
         try{
-            $user = $this->db->connect()->query("SELECT * FROM user WHERE email='" . $userEmail . "'")->fetch();
+            $user = $this->db->query("SELECT * FROM user WHERE email='" . $userEmail . "'")->fetch();
         }
         catch (PDOException $e) {
             setcookie('error', $e->getMessage());

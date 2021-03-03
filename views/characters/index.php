@@ -11,7 +11,7 @@
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script defer src="assets/js/characterGrid.js"></script>
+    <script defer src="/employee-management-v2/assets/js/characterGrid.js"></script>
 </head>
 <body>
     <div id="jsGrid"></div>

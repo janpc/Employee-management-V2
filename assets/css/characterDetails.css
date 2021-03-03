@@ -8,6 +8,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  margin: 0;
+  padding: 0;
 }
 
 .infoContainer {
@@ -69,11 +71,12 @@ label {
   margin-bottom: 0.2em;
 }
 
-label:first-of-type{
+label:first-of-type {
   margin-top: 0.5em;
 }
 
-input, select {
+input,
+select {
   font-family: "Nanum Pen Script", cursive;
   font-size: 28px;
   border-radius: 37% 45% 62% 83%/ 47% 32% 53% 72%;
@@ -82,10 +85,10 @@ input, select {
   padding: 0 0.5em;
   margin-bottom: 0.8em;
   width: fit-content;
-  outline:none;
+  outline: none;
 }
 
-input[type=submit]{
+input[type="submit"] {
   font-size: 36px;
   background-color: #0000;
   border-radius: 37% 45% 62% 83%/ 47% 32% 53% 72%;
@@ -95,7 +98,7 @@ input[type=submit]{
   cursor: pointer;
 }
 
-input[type=submit]:hover{
+input[type="submit"]:hover {
   box-shadow: 1px 1px 5px #0008;
 }
 
