@@ -14,17 +14,19 @@
 }
 
 .header>h1{
-    margin: 20px 25px;
+    margin: 20px 50px;
     font-size: 48px;
 }
 
 .links{
-    margin: 20px 25px;
+    margin: 30px 50px;
+    font-size: 32px;
 }
 
 .links>a{
     margin: 0 0.15em;
     text-decoration: none;
+    color: black;
 }
 
 .links>a:hover, .links>a:focus{
