@@ -1,0 +1,40 @@
+.header{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100vw;
+    height: 120px;
+    display: flex;
+    align-items: top;
+    justify-content: space-between;
+    background: url('../img/ripped.png');
+    background-size: cover;
+    background-position: bottom;
+    font-family: "Nanum Pen Script", cursive;
+}
+
+.header>h1{
+    margin: 20px 50px;
+    font-size: 48px;
+}
+
+.links{
+    margin: 30px 50px;
+    font-size: 32px;
+}
+
+.links>a{
+    margin: 0 0.15em;
+    text-decoration: none;
+    color: black;
+}
+
+.links>a:hover, .links>a:focus{
+    text-decoration: underline;
+}
+
+.links>b{
+    font-size: 32px;
+    font-weight: 400;
+    margin: auto 0;
+}

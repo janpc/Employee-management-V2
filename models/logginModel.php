@@ -1,7 +1,11 @@
 <?php
 
-class LogginModel extends Model
+class LogginModel
 {
+    function __construct()
+    {
+        $this->db = Database::getPDO();
+    }
 
     function compare(string $userEmail, string $password)
     {

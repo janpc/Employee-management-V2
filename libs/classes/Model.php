@@ -114,13 +114,14 @@ abstract class Model
         },array_keys($arrayToInsert));
 
         $bindedKeys = array_map(function($key) {
-            return "$key = :$key";
+            return "$key = :$key,";
         },$keys);
 
         $str = join(" ", $bindedKeys);
+        $str = substr($str, 0, -1);
 
         try {
-            $stmt = $this->database->prepare("UPDATE $this->table $str WHERE id = $object->id");
+            $stmt = $this->database->prepare("UPDATE $this->table SET $str WHERE id = $object->id");
             foreach($arrayToInsert as $key=>&$value) {
                 $stmt->bindParam(":$key", $value);
             }
