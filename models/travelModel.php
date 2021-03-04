@@ -14,7 +14,7 @@ class TravelModel extends Model
     }
     function getAllTravelExt()
     {
-        $stmt = $this->database->prepare("SELECT t.id as travel_no, c.id as charecter_id, c.name, c.species, c.gender, o_l.id as origin_loc_id,
+        $stmt = $this->database->prepare("SELECT t.id as travel_no, c.id as charecter_id, c.name as charecter_name, c.species as charecter_species, c.gender as charecter_gender, o_l.id as origin_loc_id,
             o_l.dimension as origin_loc_dimension, o_l.loc_type as origin_loc_type,
             o_l.name as origin_loc_name,  d_l.id as des_loc_id,
             d_l.dimension as des_loc_dimension, d_l.loc_type as des_loc_type,
@@ -33,17 +33,20 @@ class TravelModel extends Model
             foreach ($data as $travel) {
                 $originLoc = new Location($travel['origin_loc_id'], $travel['origin_loc_name'], $travel['origin_loc_type'], $travel['origin_loc_dimension']);
                 $destinationLoc = new Location($travel['des_loc_id'], $travel['des_loc_name'], $travel['des_loc_type'], $travel['des_loc_dimension']);
-                $travel = new Travel ($travel['travel_no'], $originLoc, $destinationLoc);
-
-                /* $character = new CharacterExt(
-                $data['id'], $data['name'], $data['status'], $data['species'], $data['gender'], $originLoc, $lastLoc 
-            );*/
-
-                array_push($travels, $travel);
+                $character = new CharacterExt($travel['charecter_id'], $travel['charecter_name'], $travel['charecter_species'], $travel['charecter_gender']);
+                $mytravel = new Travel ($travel['travel_no'], $originLoc, $destinationLoc);
+                $mytravel->setCharacterOnTravel($character);
+                if (sizeof($travels)>0) {
+                    if ($travels[sizeof($travels)-1]->id == $travel['travel_no']) { //last travel pushed id is equal to current travel id -> they are same travel
+                        $character = new CharacterExt($travel['charecter_id'], $travel['charecter_name'], $travel['charecter_species'], $travel['charecter_gender']);
+                        $travels[sizeof($travels)-1]->setCharacterOnTravel($character);
+                    } else {
+                        array_push($travels, $mytravel);
+                    }
+                } else {
+                    array_push($travels, $mytravel);
+                }
             }
-            echo "<pre>";
-        print_r($travels);
-        echo "</pre>";
 
         } catch (PDOException $e) {
             return false;

@@ -21,6 +21,7 @@
                         <th>Travel number</th>
                         <th>Origin location</th>
                         <th>Target location</th>
+                        <th>Passengers</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,9 +30,12 @@
                         echo "<tr>
                         <td><a href=>'{$travel->id}'</a></td>
                         <td><a href=>'{$travel->originLoc->name}'</a></td>
-                        <td><a href=>'{$travel->destinationLoc->name}'</a></td>
-                    </tr>";
+                        <td><a href=>'{$travel->destinationLoc->name}'</a></td>";
+                    foreach ($travel->charactersTraveling as $character) {
+                        echo "<td><a href=>'{$character->name}'</a></td>";
                     }
+                    }
+                    echo "</tr>";
                     ?>
                 </tbody>
             </table>

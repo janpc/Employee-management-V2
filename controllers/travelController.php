@@ -1,6 +1,13 @@
 <?php
 
+require MODELS . 'travelModel.php';
+
 class TravelController extends Controller{
+
+    function __construct () {
+        parent::__construct();
+        $this->model = new TravelModel ();
+    }
     function render()
     {
         $this->view->data = $this->model->getAllTravelExt();
