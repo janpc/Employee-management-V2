@@ -9,6 +9,7 @@
 
     <script defer src="/employee-management-v2/assets/js/episodeGrid.js"></script>
     <link rel="stylesheet" href="/employee-management-v2/assets/css/characterDashboard.css">';
+    <link rel="stylesheet" href="/employee-management-v2/assets/css/episodeDashboard.css">';
 </head>
 <body>
     <?php require_once(ASSETS . 'html/header.html') ?>
