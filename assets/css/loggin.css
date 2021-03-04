@@ -85,10 +85,10 @@ label {
 
   .scotch-tape{
     position: absolute;
-    width: 150px;
+    width: 200px;
     height: auto;
     border: none;
-    left: 46%;
-    top: calc(50% - 250px);
-    transform: rotate(-30deg);
+    left: 44%;
+    top: calc(50% - 265px);
+    transform: rotate(-35deg);
   }
