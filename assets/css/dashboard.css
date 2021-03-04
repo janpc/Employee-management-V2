@@ -1,0 +1,98 @@
+h2 {
+  margin: 10px 50px;
+  align-self: flex-start;
+  font-weight: 400;
+}
+
+.gridContainer {
+  margin: 0 auto;
+  margin-top: 10vh;
+  border: 2px solid black;
+  border-radius: 5% 1% 7% 1%/ 1% 7% 1% 5%;
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  height: 80vh;
+
+  background: url(https://img.freepik.com/foto-gratis/espacio-diseno-papel-textura-fondo_53876-42312.jpg?size=626&ext=jpg&ga=GA1.2.407212201.1603324800);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.gridContainer,
+.gridContainer::before,
+.gridContainer::after {
+  /* Styles to distinguish sheets from one another */
+  box-shadow: 2px 2px 10px #0008;
+}
+
+.gridContainer::before,
+.gridContainer::after {
+  content: "";
+  position: absolute;
+  height: 80vh;
+  width: 90vw;
+  background: url(https://img.freepik.com/foto-gratis/espacio-diseno-papel-textura-fondo_53876-42312.jpg?size=626&ext=jpg&ga=GA1.2.407212201.1603324800);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 7% 5% 1% 1%/ 1% 1% 7% 5%;
+  left: 5vw;
+  margin-top: 14.5vh;
+  border: 2px solid black;
+}
+
+.gridContainer::before {
+  right: 15px;
+  top: 0;
+  transform: rotate(-2deg);
+  z-index: -1;
+}
+
+.gridContainer::after {
+  top: 5px;
+  right: -5px;
+  transform: rotate(1deg);
+  z-index: -2;
+}
+
+#jsGrid {
+  background-color: #0000;
+}
+
+.scotch-tape{
+  position: absolute;
+  width: 200px;
+  height: auto;
+  border: none;
+  left: 44%;
+  top: 8vh;
+  transform: rotate(-35deg);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  overflow: hidden;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 20px 40px 30px 55px/ 20px 40px 30px 55px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
