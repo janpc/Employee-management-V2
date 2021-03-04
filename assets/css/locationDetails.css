@@ -3,6 +3,16 @@
     top: -100px;
 }
 
+.scotch-tape{
+    position: absolute;
+    width: 200px;
+    height: auto;
+    border: none;
+    left: 30%;
+    top: -15%;
+    transform: rotate(-35deg);
+}
+
 .infoContainer {
 	margin: 0 auto;
 	border: 2px solid black;
@@ -134,7 +144,6 @@ img:hover {
 	position: absolute;
 	bottom: 100px;
     padding: 10px;
-    border: 2px solid #666666;
     border-radius: 3px;
 	width: 70%;
 }
@@ -142,10 +151,15 @@ img:hover {
 .resident__ul {
     list-style-type: none;
 	display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
     width: fit-content;
 }
 
 .resident__li {
+    filter: drop-shadow(2px 4px 6px black);
     width: 150px;
 	background-color: rgb(251, 233, 67);
 	border-radius: 12px 24px 3px 5px/ 2px 4px 13px 25px;
@@ -153,7 +167,6 @@ img:hover {
 	box-shadow: 2px 2px 5px #0008;
 	padding: 7px 20px;
 	overflow: hidden;
-	margin: 1em;
 }
 
 .resident__li > h2 {
@@ -185,11 +198,11 @@ img:hover {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: #666;
+	background:  rgb(251, 233, 67);
 	border-radius: 20px 40px 30px 55px/ 20px 40px 30px 55px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: #444;
+	background:  rgb(202, 187, 53);
 }

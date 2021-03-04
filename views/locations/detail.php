@@ -16,12 +16,12 @@
 <body>
     <?php require_once(ASSETS . 'html/header.html') ?>
     <section class='residents__section'>
-        <h2 style=color:white;position:fixed;top:70px>Residents:</h2>
         <ul class='resident__ul'>
         <?php
             foreach ($this->data->residents as $resident) {
+                $rotation = rand(-30,30)/40;
                 echo "
-                <li class='resident__li'>
+                <li class='resident__li' style=transform:rotate(" . $rotation . "deg)>
                     <h2>$resident->name</h2>
                     <a href='http://" . $_SERVER['SERVER_NAME'] . "/employee-management-v2/character/details/" . $resident->id . "'>
                         <img width=150 src='https://rickandmortyapi.com/api/character/avatar/$resident->id.jpeg' alt=''>
@@ -32,6 +32,7 @@
         </ul>
     </section>
     <section class='infoSection'>
+        <img src="http://www.clker.com/cliparts/Q/v/Z/T/b/k/scotch-tape.svg" alt="" class="scotch-tape">
         <form action="" method="post" class='infoContainer'>
             <div class='info_column'>
                 <label for="name">Name:</label>

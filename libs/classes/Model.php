@@ -109,7 +109,7 @@ abstract class Model
 
         foreach ($iterable as $key => $value) {
             if($key == 'id') {
-                $id = $value;
+                $id = (int)$value;
             }
             $snakeKey = Converter::camelToSnakeCase($key);
             $arrayToInsert[$snakeKey] = $value;

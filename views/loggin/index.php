@@ -10,6 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loggin</title>
+    <link rel="stylesheet" href="/employee-management-v2/assets/css/errorMessage.css">
+    <script defer src="/employee-management-v2/assets/js/error.js"></script>
     <link rel="stylesheet" href="/employee-management-v2/assets/css/loggin.css">
 </head>
 <body>
