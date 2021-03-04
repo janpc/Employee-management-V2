@@ -21,7 +21,7 @@ body {
     margin: 0 auto;
     margin-top: 10vh;
     border: 2px solid black;
-    border-radius: 5% 2% 7% 3%/ 2% 7% 3% 5%;
+    border-radius: 5% 1% 7% 1%/ 1% 7% 1% 5%;
     font-family: "Nanum Pen Script", cursive;
     font-size: 28px;
     display: flex;
@@ -54,7 +54,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border-radius: 5% 2% 7% 3%/ 2% 7% 3% 5%;
+  border-radius: 7% 5% 1%  1%/ 1% 1% 7%  5%;
   left: 5vw;
   margin-top: 14.5vh;
   border: 2px solid black;
@@ -63,7 +63,7 @@ body {
 .gridContainer::before {
   right: 15px;
   top: 0;
-  transform: rotate(-1deg);
+  transform: rotate(-2deg);
   z-index: -1;
 }
 
