@@ -13,8 +13,6 @@
 <body>
     <?php require_once(ASSETS . 'html/header.html') ?>
     <section class='gridContainer'>
-    <img src="https://pngimg.com/uploads/pin/pin_PNG100.png" alt="" class="pin">
-    <img src="https://pngimg.com/uploads/pin/pin_PNG100.png" alt="" class="pin">
         <h2>Characters:</h2>
         <div id="jsGrid"></div>
     </section>
