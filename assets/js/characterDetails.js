@@ -1,3 +1,4 @@
+const basePath = "http://localhost/employee-management-v2";
 const $origin_loc = document.getElementById("origin_loc");
 const $last_loc = document.getElementById("last_loc");
 const $status = document.getElementById("status");
@@ -61,15 +62,32 @@ function setStatus() {
 }
 
 function setGender() {
-    genderOptions.forEach((option) => {
-        console.log(option.name)
-      $option = `<option value='${option.value}'>${option.name}</option>`;
-      $optionSelected = `<option value='${option.value}' selected="selected">${option.name}</option>`;
-  
-      if ($gender.dataset["gender"] != option.value) {
-        $gender.innerHTML += $option;
-      } else {
-        $gender.innerHTML += $optionSelected;
-      }
-    });
-  }
+  genderOptions.forEach((option) => {
+    console.log(option.name);
+    $option = `<option value='${option.value}'>${option.name}</option>`;
+    $optionSelected = `<option value='${option.value}' selected="selected">${option.name}</option>`;
+
+    if ($gender.dataset["gender"] != option.value) {
+      $gender.innerHTML += $option;
+    } else {
+      $gender.innerHTML += $optionSelected;
+    }
+  });
+}
+
+const $infoContainer = document.getElementById("infoContainer");
+
+$infoContainer.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target)
+  formData.append('id', $infoContainer.dataset['id'] );
+  const value = Object.fromEntries(formData.entries());
+  data = JSON.stringify(value);
+  axios({
+    method: "PUT",
+    url: `${basePath}/api/character`,
+    data: data,
+  }).then((response) => {
+    console.log(response);
+  });
+});

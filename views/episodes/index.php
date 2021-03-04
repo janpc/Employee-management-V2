@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,12 +12,14 @@
     <link rel="stylesheet" href="/employee-management-v2/assets/css/dashboard.css">';
     <link rel="stylesheet" href="/employee-management-v2/assets/css/episodeDashboard.css">';
 </head>
+
 <body>
     <?php require_once(ASSETS . 'html/header.html') ?>
     <section class='gridContainer'>
-    <img src="http://www.clker.com/cliparts/Q/v/Z/T/b/k/scotch-tape.svg" alt="" class="scotch-tape">
+        <img src="http://www.clker.com/cliparts/Q/v/Z/T/b/k/scotch-tape.svg" alt="" class="scotch-tape">
         <h2>Episodes:</h2>
         <div id="jsGrid"></div>
     </section>
 </body>
+
 </html>
