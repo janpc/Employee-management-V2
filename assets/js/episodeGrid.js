@@ -23,9 +23,11 @@ const init = () => {
         },
         { name: "name", type: "text", width: 60, validate: "required" },
         {
+          title: "Air date (yyyy-mm-dd)",
           name: "airDate",
-          type: "date",
-          width: 40,
+          align: "center",
+          type: "text",
+          width: 60,
           validate: "required",
           valueType: "string",
         },
