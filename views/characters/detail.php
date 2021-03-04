@@ -16,7 +16,6 @@
 <body>
     <?php require_once(ASSETS . 'html/header.html') ?>
     <section class='infoSection'>
-        <img src="https://pngimg.com/uploads/pin/pin_PNG100.png" alt="" class="pin">
         <form action="" method="post" class='infoContainer'>
             <div class='info_column'>
                 <img src="https://rickandmortyapi.com/api/character/avatar/<?php echo $this->data->id ?>.jpeg" alt="">
@@ -46,7 +45,6 @@
     </section>
     <div class='moreInfo'>
         <section class='episodesSection'>
-            <img src="https://pngimg.com/uploads/pin/pin_PNG100.png" alt="" class="pin">
             <h2>Episodes:</h2>
             <ul class='episodesSection-list'>
                 <?php
@@ -58,7 +56,6 @@
         </section>
 
         <section class='travelsSection'>
-            <img src="https://pngimg.com/uploads/pin/pin_PNG100.png" alt="" class="pin">
             <h2>Travels:</h2>
             <ul class='travelsSection-list'>
                 <?php

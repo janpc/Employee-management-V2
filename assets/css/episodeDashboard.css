@@ -1,0 +1,11 @@
+.gridContainer {
+    width: 75vw;
+    height: 80vh;
+  }
+
+.gridContainer::before,
+.gridContainer::after {
+  height: 80vh;
+  width: 75vw;
+  left: 12.5vw;
+}
