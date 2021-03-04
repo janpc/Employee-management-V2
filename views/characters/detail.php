@@ -1,4 +1,4 @@
-<?php $_SESSION["admin"]=true ?>
+<?php $_SESSION["admin"] = false ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +23,7 @@
                 <label for="origin_loc">Origin:</label>
                 <div>
                     <a type="text" href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/location/details/' . $this->data->originLoc->id ?>">></a>
-                    <select name="origin_loc" id="origin_loc" <?php echo isset($_SESSION["admin"])?  'disabled':'';?>>
+                    <select name="origin_loc" id="origin_loc" <?php echo (isset($_SESSION["admin"]) && $_SESSION["admin"] == true )? '' : 'disabled'; ?>>
                         <option value="earth">earth</option>
                     </select>
                 </div>
@@ -37,7 +37,7 @@
             </div>
             <div class='info_column'>
                 <label for="name">Name:</label>
-                <input type="text" name="name" id="name" value='<?php echo $this->data->name ?>'>
+                <input type="text" name="name" id="name" value='<?php echo $this->data->name ?>' <?php echo (isset($_SESSION["admin"]) && $_SESSION["admin"] == true )? '' : 'disabled'; ?>>
                 <label for="status">Status:</label>
                 <input type="text" name="status" id="status" value='<?php echo $this->data->status ?>'>
                 <label for="species">Specie:</label>
