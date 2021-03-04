@@ -117,8 +117,8 @@ a {
   border: 2px solid transparent;
 }
 
-a:hover,
-a:focus {
+.infoContainer a:hover,
+.infoContainer a:focus {
   border-radius: 37% 45% 62% 83%/ 47% 32% 53% 72%;
   border: 2px solid black;
 }
