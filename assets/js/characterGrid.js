@@ -100,9 +100,10 @@ const init = () => {
       },
 
       onItemDeleting: function ({ item }) {
-        axios({
-          method: "DELETE",
-          url: `${basePath}/api/character/${item.id}`,
+        axios.delete(`${basePath}/api/character`, {
+          params: {
+            id: item.id
+          }
         }).then(()=>{
           $("#jsGrid").jsGrid("refresh");
         });
