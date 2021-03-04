@@ -10,11 +10,12 @@ class Travel {
     public Location $destinationLoc;
     public $charactersTraveling = array();
 
-    public function __construct($id, $originLoc, $destinationLoc)
+    public function __construct($id, $originLoc, $destinationLoc, $episode)
     {
         $this->id = $id;
         $this->originLoc = $originLoc;
         $this->destinationLoc = $destinationLoc;
+        $this->episode = $episode;
     }
 
     public function setCharacterOnTravel ($character) {
