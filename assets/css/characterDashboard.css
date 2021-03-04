@@ -78,6 +78,17 @@ body {
       background-color: #0000;
   }
 
+  .pin {
+    position: absolute;
+    width: 60px;
+    height: auto;
+    border: none;
+    top: 15vh;
+    left: 47%;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
 
   /* width */
 ::-webkit-scrollbar {
