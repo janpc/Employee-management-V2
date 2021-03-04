@@ -22,7 +22,7 @@ class Database
 
             return $pdo;
         } catch (PDOException $e) {
-            ErrorDisplayer::show('Could not connect to database');
+            ErrorDisplayer::add('Could not connect to database');
             die();
         }
     }

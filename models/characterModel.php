@@ -29,6 +29,10 @@ class CharacterModel extends Model
             $stmt->execute();
             $data = $stmt->fetch();
 
+            if(!$data) {
+                return false;
+            }
+
             $episodesIn = $this->getEpisodesForCharacter($id);
 
             $originLoc = new Location($data['origin_id'], $data['origin_name'], $data['origin_loc_type'], $data['origin_dimension']);

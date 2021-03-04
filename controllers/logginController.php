@@ -36,6 +36,7 @@ class LogginController extends Controller
                 header('Location: ' . BASE_PATH . 'character');
             } else {
                 $this->view->render('loggin/index');
+                ErrorDisplayer::add('Incorrect email or password');
             }
         }
     }

@@ -15,3 +15,5 @@ SessionController::checkSession();
 
 $router = new Router();
 $router->exec();
+
+ErrorDisplayer::render();

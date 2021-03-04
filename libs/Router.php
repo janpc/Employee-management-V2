@@ -22,7 +22,7 @@ class Router
             $action = $this->action;
             $this->controller->$action($this->urlParams, $this->urlQueries);
         } else {
-            ErrorDisplayer::show('Page not found');
+            ErrorDisplayer::add('Page not found');
         }
     }
 

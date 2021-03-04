@@ -18,7 +18,7 @@ class CharacterController extends Controller
         if ($this->view->data) {
             $this->view->render('characters/index');
         } else {
-            ErrorDisplayer::show('Could not get characters');
+            ErrorDisplayer::add('Could not get characters');
         }
     }
 
@@ -28,7 +28,8 @@ class CharacterController extends Controller
         if ($this->view->data) {
             $this->view->render('characters/detail');
         } else {
-            ErrorDisplayer::show('Could not get character');
+            $this->view->render('characters/index');
+            ErrorDisplayer::add('Could not get character with id ' . $params[0]);
         }
     }
 

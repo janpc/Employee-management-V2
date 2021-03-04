@@ -2,12 +2,12 @@
 
 class User
 {
-    public Int $id;
-    public String $username;
-    public String $password;
-    public String $email;
+    public ?int $id;
+    public ?string $username;
+    public ?string $password;
+    public ?string $email;
 
-    public function __construct($id = -1, $username = "", $password = "", $email = "")
+    public function __construct($id = null, $username = null, $password = null, $email = null)
     {
         $this->id = $id;
         $this->username = $username;
