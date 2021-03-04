@@ -55,12 +55,13 @@ abstract class Model
 
     function insert($object)
     {
-        echo var_dump($object);
         $arrayToInsert = array();
         if(is_array($object)) {
             $iterable = $object;
-        } else {
+        } else if(is_object($object)) {
             $iterable = get_object_vars($object);
+        } else {
+            return false;
         }
 
         foreach ($iterable as $key => $value) {
@@ -70,9 +71,6 @@ abstract class Model
             $snakeKey = Converter::camelToSnakeCase($key);
             $arrayToInsert[$snakeKey] = $value;
         }
-
-        echo var_dump($arrayToInsert);
-
 
         $keys = array_map(function($key) {
             return "$key";
@@ -99,18 +97,19 @@ abstract class Model
     }
 
     function update($object)
-    {
-        echo var_dump($object);
+    {            
         $arrayToInsert = array();
         if(is_array($object)) {
             $iterable = $object;
-        } else {
+        } else if (is_object($object)) {
             $iterable = get_object_vars($object);
+        } else {
+            return false;
         }
 
         foreach ($iterable as $key => $value) {
             if($key == 'id') {
-                $id = $value;
+                $id = (int)$value;
             }
             $snakeKey = Converter::camelToSnakeCase($key);
             $arrayToInsert[$snakeKey] = $value;
@@ -132,21 +131,21 @@ abstract class Model
             foreach($arrayToInsert as $key=>&$value) {
                 $stmt->bindParam(":$key", $value);
             }
-            $stmt->execute();
+            $result = $stmt->execute();
         } catch (PDOException $e) {
             return false;
         }
-        return true;
+        return $result;
     }
 
     function delete($id)
     {
         try {
             $stmt = $this->database->prepare("DELETE FROM $this->table WHERE id=$id");
-            $stmt->execute();
+            $result = $stmt->execute();
         } catch (PDOException $e) {
             return false;
         }
-        return true;
+        return $result;
     }
 }

@@ -10,10 +10,11 @@ class Character
     public ?int $originLocId;
     public ?int $lastLocId;
 
-    public function __construct($id = null, $name = null, $species = null, $gender = null, $originLocId = null, $lastLocId = null)
+    public function __construct($id = null, $name = null, $status = null, $species = null, $gender = null, $originLocId = null, $lastLocId = null)
     {
         $this->id = $id;
         $this->name = $name;
+        $this->status = $status;
         $this->species = $species;
         $this->gender = $gender;
         $this->originLocId = $originLocId;

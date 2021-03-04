@@ -1,7 +1,7 @@
 <?php
 require MODELS . 'entity/Character.php';
 require MODELS . 'entity/CharacterExt.php';
-require MODELS . 'entity/Location.php';
+require_once MODELS . 'entity/Location.php';
 require MODELS . 'entity/Episode.php';
 
 class CharacterModel extends Model
@@ -10,6 +10,32 @@ class CharacterModel extends Model
     public function __construct()
     {
         parent::__construct('character_', 'Character');
+    }
+
+    function getByResidenceId($locId) {
+        try {
+            $stmt = $this->database->prepare("SELECT c.name, c.status, c.species, c.gender, c.id
+            FROM character_ c 
+            INNER JOIN location l ON c.last_loc_id = l.id
+            WHERE l.id = $locId");
+
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            if(!$data) {
+                return false;
+            }
+
+            $characters = array_map(function($character) {
+                return new Character(
+                    $character['id'], $character['name'], $character['status'], $character['species'], $character['gender']
+                );
+            }, $data);
+        } catch (PDOException $e) {
+            return false;
+        }
+        return $characters;
     }
 
     function getExtendedById($id)

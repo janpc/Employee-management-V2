@@ -21,24 +21,26 @@ setStatus();
 setGender();
 
 function setLocations() {
-  console.log("data");
   axios
     .get(`http://localhost/employee-management-v2/api/location`)
     .then(({ data }) => {
       const locations = data;
 
-      $origin_loc.innerHTML = "";
+      if($origin_loc) {
+        $origin_loc.innerHTML = "";
+      }
       $last_loc.innerHTML = "";
       locations.forEach((location) => {
         $option = `<option value='${location.id}'>${location.name}</option>`;
         $optionSelected = `<option value='${location.id}' selected="selected">${location.name}</option>`;
 
-        if ($origin_loc.dataset["locationid"] != location.id) {
-          $origin_loc.innerHTML += $option;
-        } else {
-          $origin_loc.innerHTML += $optionSelected;
+        if($origin_loc) {
+          if ($origin_loc.dataset["locationid"] != location.id) {
+            $origin_loc.innerHTML += $option;
+          } else {
+            $origin_loc.innerHTML += $optionSelected;
+          }
         }
-
         if ($last_loc.dataset["locationid"] != location.id) {
           $last_loc.innerHTML += $option;
         } else {
