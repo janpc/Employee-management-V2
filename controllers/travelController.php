@@ -18,7 +18,7 @@ class TravelController extends Controller{
         }
     }
 
-    function renderCharacters($id)
+    /* function renderCharacters($id)
     {
         $this->view->data = $this->model->getCharactersOnTravel($id);
         if ($this->view->data) {
@@ -53,7 +53,7 @@ class TravelController extends Controller{
         } else {
             ErrorController::renderError('Could not get travel');
         }
-    }
+    } */
     /* function details($params)
     {
         $this->view->data = $this->model->getById($params[0]);
