@@ -46,6 +46,7 @@
     </section>
     <div class='moreInfo'>
         <section class='episodesSection'>
+            <img src="https://pngimg.com/uploads/pin/pin_PNG100.png" alt="" class="pin">
             <h2>Episodes:</h2>
             <ul class='episodesSection-list'>
                 <?php
@@ -57,6 +58,7 @@
         </section>
 
         <section class='travelsSection'>
+            <img src="https://pngimg.com/uploads/pin/pin_PNG100.png" alt="" class="pin">
             <h2>Travels:</h2>
             <ul class='travelsSection-list'>
                 <?php
