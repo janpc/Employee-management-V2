@@ -35,7 +35,10 @@
 
 .jsgrid-header-row > .jsgrid-header-cell:first-child,
 .jsgrid-filter-row > .jsgrid-cell:first-child,
-.jsgrid-insert-row > .jsgrid-cell:first-child {
+.jsgrid-insert-row > .jsgrid-cell:first-child,
+.jsgrid-header-row > .jsgrid-header-cell:nth-child(2),
+.jsgrid-filter-row > .jsgrid-cell:nth-child(2),
+.jsgrid-insert-row > .jsgrid-cell:nth-child(2) {
   border-left: none;
 }
 
@@ -101,9 +104,9 @@
 }
 
 .jsgrid-grid-body {
-    border: 2px solid black;
-    border-radius: 2% 2% 1% 3%/ 3% 1% 3% 1%;
-    margin-top: 5px;
+  border: 2px solid black;
+  border-radius: 2% 2% 1% 3%/ 3% 1% 3% 1%;
+  margin-top: 5px;
 }
 
 .jsgrid-cell {
@@ -115,7 +118,8 @@
   border-top: none;
 }
 
-.jsgrid-grid-body .jsgrid-cell:first-child {
+.jsgrid-grid-body .jsgrid-cell:first-child,
+.jsgrid-grid-body .jsgrid-cell:nth-child(2) {
   border-left: none;
 }
 .jsgrid-row > .jsgrid-cell {
@@ -143,7 +147,7 @@
 }
 
 .jsgrid-selected-row > .jsgrid-cell {
-    background-color: rgba(217, 255, 0, 0.30);
+  background-color: rgba(217, 255, 0, 0.3);
   border-color: black;
 }
 

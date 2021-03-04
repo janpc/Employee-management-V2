@@ -16,6 +16,7 @@ const init = () => {
       fields: [
         {
           name: "id",
+          css: "hidden",
           type: "number",
           width: 20,
           readOnly: true,
