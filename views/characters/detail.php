@@ -9,14 +9,15 @@
 
     <?php require_once(UTIL . 'htmlLinks.php') ?>
 
-    <link rel="stylesheet" href="/employee-management-v2/assets/css/characterDetails.css">
+    <link rel="stylesheet" href="/employee-management-v2/assets/css/details.css">
     <script defer src="/employee-management-v2/assets/js/characterDetails.js"></script>
 </head>
 
 <body>
     <?php require_once(ASSETS . 'html/header.html') ?>
     <section class='infoSection'>
-        <form action="" method="post" class='infoContainer'>
+        <img src="http://www.clker.com/cliparts/Q/v/Z/T/b/k/scotch-tape.svg" alt="" class="scotch-tape">
+        <form action="" method="post" class='infoContainer' id='infoContainer' data-id='<?php echo $this->data->id ?>'>
             <div class='info_column'>
                 <img src="https://rickandmortyapi.com/api/character/avatar/<?php echo $this->data->id ?>.jpeg" alt="">
                 <label for="origin_loc">Origin:</label>

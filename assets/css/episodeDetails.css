@@ -1,0 +1,27 @@
+.infoContainer {
+    width: 375px;
+    height: 600px;
+
+  }
+
+  .infoContainer::before,
+  .infoContainer::after {
+    height: 620px;
+    width: 385px;
+  }
+
+  .scotch-tape {
+    left: 22%;
+  }
+
+  .info_column {
+    width: calc(100%- 1.6em);
+    display: flex;
+    flex-direction: column;
+    margin: 0.8em;
+  }
+  
+  input[type="submit"] {
+    width: 100px;
+    margin: 1em 0;
+  }
