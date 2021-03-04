@@ -1,17 +1,16 @@
 <?php
 
-//https://web.archive.org/web/20140625191431/https://developers.google.com/speed/articles/optimizing-php
-class Character {
-    public Int $id;
-    public $name;
-    public $status;
-    public $species;
-    public $gender;
-    public $originLocId;
-    public $lastLocId; 
+class Character
+{
+    public ?int $id;
+    public ?string $name;
+    public ?string $status;
+    public ?string $species;
+    public ?string $gender;
+    public ?int $originLocId;
+    public ?int $lastLocId;
 
-    /*
-    public function __construct($id, $name, $species, $gender, $originLocId, $lastLocId) 
+    public function __construct($id = null, $name = null, $species = null, $gender = null, $originLocId = null, $lastLocId = null)
     {
         $this->id = $id;
         $this->name = $name;
@@ -20,6 +19,4 @@ class Character {
         $this->originLocId = $originLocId;
         $this->lastLocId = $lastLocId;
     }
-    */
-
 }

@@ -1,2 +1,3 @@
 <?php
-// location details
+
+print_r($this->data);

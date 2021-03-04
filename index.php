@@ -4,21 +4,14 @@ require LIBS . 'Database.php';
 require LIBS . 'classes/Model.php';
 require LIBS . 'classes/Controller.php';
 require LIBS . 'classes/View.php';
-require LIBS . 'App.php';
-require LIBS . 'Api.php';
+require LIBS . 'classes/Error.php';
+require LIBS . 'Router.php';
+
+require CONTROLLERS . 'sessionController.php';
 
 require UTIL . 'Converter.php';
 
-require CONTROLLERS . 'errorController.php';
+SessionController::checkSession();
 
-/* require 'config/config.php'; */
-
-$url = isset($_GET['url']) ? $_GET['url'] : null;
-$url = rtrim($url, '/');
-$urlParams = explode('/', $url);
-
-if (isset($urlParams[0]) && $urlParams[0] === 'api') {
-    $api = new Api($urlParams);
-} else {
-    $app = new App($urlParams);
-}
+$router = new Router();
+$router->exec();

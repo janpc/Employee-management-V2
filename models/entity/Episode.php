@@ -1,9 +1,17 @@
 <?php
 
-//https://web.archive.org/web/20140625191431/https://developers.google.com/speed/articles/optimizing-php
-class Episode {
-    public Int $id;
-    public $airDate;
-    public $seasonNo;
-    public $episodeNo;
+class Episode
+{
+    public ?int $id;
+    public ?string $airDate;
+    public ?int $seasonNo;
+    public ?int $episodeNo;
+
+    public function __construct($id = null, $airDate = null, $seasonNo = null, $episodeNo = null)
+    {
+        $this->id = $id;
+        $this->airDate = $airDate;
+        $this->seasonNo = $seasonNo;
+        $this->episodeNo = $episodeNo;
+    }
 }

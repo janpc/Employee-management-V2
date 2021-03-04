@@ -1,5 +1,4 @@
 body {
-  background-color: aqua;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -46,7 +45,7 @@ body {
   background-position: center;
   background-size: cover;
   height: 600px;
-  border-radius: 5% 2% 7% 3%/ 2% 7% 3% 5%;
+  border-radius: 5% 3% 2% 7% /  7% 3% 5% 2%;
   left: calc(50vw - 375px);
   margin-top: calc(50vh - 300px);
   border: 2px solid black;
@@ -80,17 +79,12 @@ select {
   font-family: "Nanum Pen Script", cursive;
   font-size: 28px;
   border-radius: 37% 45% 62% 83%/ 47% 32% 53% 72%;
-  border: none;
-  background-color: rgba(217, 255, 0, 0.66);
+  border: 1px solid rgba(217, 255, 0, 0.70);
+  background-color: rgba(217, 255, 0, 0.55);
   padding: 0 0.5em;
   margin-bottom: 0.8em;
   width: fit-content;
   outline: none;
-  opacity:1;
-}
-
-input:disabled, select:disabled{
-  opacity:1;
 }
 
 input[type="submit"] {

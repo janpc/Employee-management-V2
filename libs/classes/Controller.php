@@ -1,20 +1,24 @@
 <?php
 
-abstract class Controller {
+abstract class Controller
+{
 
-    function __construct(){
+    protected $view;
+
+    function __construct()
+    {
         $this->view = new View;
     }
     abstract function render();
 
-    function loadModel($model){
-        $path = 'models/'.$model.'Model.php';
-
-        if(file_exists($path)){
-            require $path;
-            
-            $modelName = $model.'Model';
-            $this->model = new $modelName();
+    public static function getController($name)
+    {
+        if (file_exists(CONTROLLERS . $name . 'Controller.php')) {
+            require CONTROLLERS . $name . 'Controller.php';
+            $controllerName =  $name . 'Controller';
+            return new $controllerName;
+        } else {
+            return false;
         }
     }
 }
