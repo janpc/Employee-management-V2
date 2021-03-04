@@ -1,7 +1,11 @@
 <?php
-class Error
+
+class ErrorDisplayer
 {
-    static function show($message){
-        require VIEWS . 'error/index.php';
+    static function show($message)
+    {
+        $errorView = new View;
+        $errorView->data = $message;
+        $errorView->render('error/index');
     }
 }

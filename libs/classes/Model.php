@@ -15,9 +15,9 @@ abstract class Model
 
     function getAll()
     {
-        $stmt = $this->database->prepare("SELECT * FROM $this->table");
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         try {
+            $stmt = $this->database->prepare("SELECT * FROM $this->table");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);    
             $stmt->execute();
             $data = $stmt->fetchAll();
             $classData = array();
@@ -37,8 +37,8 @@ abstract class Model
 
     function getById($id)
     {
-        $stmt = $this->database->prepare("SELECT * FROM $this->table WHERE id=$id");
         try {
+            $stmt = $this->database->prepare("SELECT * FROM $this->table WHERE id=$id");
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
             $data = $stmt->fetch();
@@ -55,14 +55,24 @@ abstract class Model
 
     function insert($object)
     {
+        echo var_dump($object);
         $arrayToInsert = array();
-        foreach (get_object_vars($object) as $key => $value) {
+        if(is_array($object)) {
+            $iterable = $object;
+        } else {
+            $iterable = get_object_vars($object);
+        }
+
+        foreach ($iterable as $key => $value) {
             if($key == 'id') {
                 continue;
             }
             $snakeKey = Converter::camelToSnakeCase($key);
             $arrayToInsert[$snakeKey] = $value;
         }
+
+        echo var_dump($arrayToInsert);
+
 
         $keys = array_map(function($key) {
             return "$key";
@@ -73,7 +83,7 @@ abstract class Model
         },$keys);
 
         $keysStr = "(" . join(",", $keys) . ")";
-        $bindedKeysStr = "(" . join(", ", $bindedKeys) . ")";
+        $bindedKeysStr = "(" . join(",", $bindedKeys) . ")";
 
         $stmt = $this->database->prepare("INSERT INTO $this->table $keysStr
         VALUES $bindedKeysStr");
@@ -110,8 +120,8 @@ abstract class Model
         $str = join(" ", $bindedKeys);
         $str = substr($str, 0, -1);
 
-        $stmt = $this->database->prepare("UPDATE $this->table SET $str WHERE id = $object->id");
         try {
+            $stmt = $this->database->prepare("UPDATE $this->table SET $str WHERE id = $object->id");
             foreach($arrayToInsert as $key=>&$value) {
                 $stmt->bindParam(":$key", $value);
             }
@@ -124,8 +134,8 @@ abstract class Model
 
     function delete($id)
     {
-        $stmt = $this->database->prepare("DELETE FROM $this->table WHERE id=$id");
         try {
+            $stmt = $this->database->prepare("DELETE FROM $this->table WHERE id=$id");
             $stmt->execute();
         } catch (PDOException $e) {
             return false;
