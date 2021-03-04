@@ -36,6 +36,7 @@ class LogginController extends Controller
                 header('Location: ' . BASE_PATH . 'character');
             } else {
                 $this->view->render('loggin/index');
+                ErrorDisplayer::add('Incorrect email or password');
             }
         }
     }
@@ -43,6 +44,6 @@ class LogginController extends Controller
     function logout()
     {
         unset($_COOKIE['userId']);
-        $this->view->render('loggin/index');
+        header('Location: ' . BASE_PATH . 'loggin');
     }
 }

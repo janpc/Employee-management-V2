@@ -17,4 +17,7 @@ echo '
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <!--header-->
-<link rel="stylesheet" href="/employee-management-v2/assets/css/header.css">';
+<link rel="stylesheet" href="/employee-management-v2/assets/css/header.css">
+
+<link rel="stylesheet" href="/employee-management-v2/assets/css/errorMessage.css">
+<script src="/employee-management-v2/assets/js/error.js"></script>';
