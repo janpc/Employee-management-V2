@@ -14,12 +14,7 @@ class EpisodeController extends Controller
 
     function render()
     {
-        $this->view->data = $this->episodeModel->getAll();
-        if ($this->view->data) {
-            $this->view->render('episodes/index');
-        } else {
-            ErrorDisplayer::add('Could not get episodes');
-        }
+        $this->view->render('episodes/index');
     }
 
     function details($params)
@@ -28,18 +23,20 @@ class EpisodeController extends Controller
         if ($this->view->data) {
             $this->view->render('episodes/detail');
         } else {
+            $this->view->render('episodes/index');
             ErrorDisplayer::add("Could not get episode");
         }
     }
 
 
-    function api($params = null){
+    function api($params = null)
+    {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'GET': {
-                    if($params==null){
+                    if ($params == null) {
                         $data = $this->episodeModel->getAll();
                         echo json_encode($data);
-                    }else{
+                    } else {
                         $data = $this->episodeModel->getById($params[0]);
                         echo json_encode($data);
                     }

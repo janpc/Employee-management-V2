@@ -18,6 +18,7 @@ echo '
 
 <!--header-->
 <link rel="stylesheet" href="/employee-management-v2/assets/css/header.css">
+<link rel="stylesheet" href="/employee-management-v2/assets/css/style.css">
 
 <link rel="stylesheet" href="/employee-management-v2/assets/css/errorMessage.css">
 <script src="/employee-management-v2/assets/js/error.js"></script>';

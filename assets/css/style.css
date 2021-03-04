@@ -1,0 +1,26 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(https://rickandmortypod.com/wp-content/uploads/2018/11/cropped-RM_page-header_background1-3.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    font-family: "Nanum Pen Script", cursive;
+  }
+  body::before {
+    content: "";
+    position: absolute;
+    background: url(https://lh3.googleusercontent.com/proxy/zgEkQr3BE39Zd9pO2j4fZh3w1Ph6stoYquORcx4zUgbAOlmeG46cuFPOHpqXG6NllsMvngOXVcLzqADHOKmgiNFytjlmFxQOhNC_6geRxLURbfwVPvz0CsN27voSiH3v0Sy4umz8UEBsGg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }

@@ -8,13 +8,12 @@
     <?php require_once(UTIL . 'htmlLinks.php') ?>
 
     <script defer src="/employee-management-v2/assets/js/characterGrid.js"></script>
-    <link rel="stylesheet" href="/employee-management-v2/assets/css/characterDashboard.css">';
+    <link rel="stylesheet" href="/employee-management-v2/assets/css/dashboard.css">';
 </head>
 <body>
     <?php require_once(ASSETS . 'html/header.html') ?>
     <section class='gridContainer'>
-    <img src="https://pngimg.com/uploads/pin/pin_PNG100.png" alt="" class="pin">
-    <img src="https://pngimg.com/uploads/pin/pin_PNG100.png" alt="" class="pin">
+    <img src="http://www.clker.com/cliparts/Q/v/Z/T/b/k/scotch-tape.svg" alt="" class="scotch-tape">
         <h2>Characters:</h2>
         <div id="jsGrid"></div>
     </section>
