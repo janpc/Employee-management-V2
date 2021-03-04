@@ -43,6 +43,6 @@ class LogginController extends Controller
     function logout()
     {
         unset($_COOKIE['userId']);
-        $this->view->render('loggin/index');
+        header('Location: ' . BASE_PATH . 'loggin');
     }
 }
