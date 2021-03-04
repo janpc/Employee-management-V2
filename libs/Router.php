@@ -22,6 +22,8 @@ class Router
             $action = $this->action;
             $this->controller->$action($this->urlParams, $this->urlQueries);
         } else {
+            $this->controller = Controller::getController('index');
+            $this->controller->render();
             ErrorDisplayer::add('Page not found');
         }
     }
