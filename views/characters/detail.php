@@ -9,7 +9,7 @@
 
     <?php require_once(UTIL . 'htmlLinks.php') ?>
 
-    <link rel="stylesheet" href="/employee-management-v2/assets/css/characterDetails.css">
+    <link rel="stylesheet" href="/employeeManagement2/employee-management-v2/assets/css/characterDetails.css">
 
 </head>
 

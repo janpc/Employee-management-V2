@@ -3,16 +3,9 @@
 class TravelController extends Controller{
     function render()
     {
-        $this->view->data = $this->model->getAll();
+        $this->view->data = $this->model->getAllTravelExt();
         if ($this->view->data) {
             $this->view->render('travel/index');
-            foreach ($this->view->data as $travel) {
-                echo("Travelid: ".$travel->id);
-                $this->renderCharacters($travel->id);
-                $this->renderOriginLoc($travel->originLocId);
-                $this->renderTargetLoc($travel->targetLocId);
-                $this->renderEpisode($travel->episodeId);
-            }
         } else {
             ErrorController::renderError('Could not get travel');
         }

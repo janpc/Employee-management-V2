@@ -7,8 +7,8 @@
     <title>Characters</title>
     <?php require_once(UTIL . 'htmlLinks.php') ?>
 
-    <script defer src="/employee-management-v2/assets/js/characterGrid.js"></script>
-    <link rel="stylesheet" href="/employee-management-v2/assets/css/characterDashboard.css">';
+    <script defer src="/employeeManagement2/employee-management-v2/assets/js/characterGrid.js"></script>
+    <link rel="stylesheet" href="/employeeManagement2/employee-management-v2/assets/css/characterDashboard.css">';
 </head>
 <body>
     <?php require_once(ASSETS . 'html/header.html') ?>
