@@ -161,7 +161,6 @@ img {
   box-shadow: 2px 2px 5px #0008;
   padding: 2px 20px;
   overflow: hidden;
-  overflow-y: auto;
   margin: 1em;
 }
 .travelsSection {
@@ -175,6 +174,8 @@ img {
 }
 
 .episodesSection-list {
+  height: 75%;
+  overflow-y: auto;
 }
 
 .episodesSection-list > li {
