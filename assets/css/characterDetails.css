@@ -11,6 +11,10 @@ body {
   padding: 0;
 }
 
+.infoSection {
+  position: relative;
+}
+
 .infoContainer {
   margin: 0 auto;
   border: 2px solid black;
@@ -21,6 +25,7 @@ body {
   flex-direction: row;
   width: 750px;
   height: 600px;
+  padding: 0.5em;
 
   background: url(https://img.freepik.com/foto-gratis/espacio-diseno-papel-textura-fondo_53876-42312.jpg?size=626&ext=jpg&ga=GA1.2.407212201.1603324800);
   background-repeat: no-repeat;
@@ -38,16 +43,13 @@ body {
 .infoContainer::after {
   content: "";
   position: absolute;
-  height: 500px;
-  width: 750px;
+  height: 620px;
+  width: 770px;
   background: url(https://img.freepik.com/foto-gratis/espacio-diseno-papel-textura-fondo_53876-42312.jpg?size=626&ext=jpg&ga=GA1.2.407212201.1603324800);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 600px;
-  border-radius: 5% 3% 2% 7% /  7% 3% 5% 2%;
-  left: calc(50vw - 375px);
-  margin-top: calc(50vh - 300px);
+  border-radius: 5% 3% 2% 7% / 7% 3% 5% 2%;
   border: 2px solid black;
 }
 
@@ -79,12 +81,16 @@ select {
   font-family: "Nanum Pen Script", cursive;
   font-size: 28px;
   border-radius: 37% 45% 62% 83%/ 47% 32% 53% 72%;
-  border: 1px solid rgba(217, 255, 0, 0.70);
+  border: 1px solid rgba(217, 255, 0, 0.7);
   background-color: rgba(217, 255, 0, 0.55);
   padding: 0 0.5em;
   margin-bottom: 0.8em;
   width: fit-content;
   outline: none;
+}
+
+select {
+  max-width: calc(100% - 1.8em);
 }
 
 input[type="submit"] {
@@ -106,17 +112,102 @@ a {
   font-size: 28px;
   margin-bottom: 1em;
   color: black;
+  text-decoration: none;
+  outline: none;
+  border: 2px solid transparent;
+}
+
+.infoContainer a:hover,
+.infoContainer a:focus {
+  border-radius: 37% 45% 62% 83%/ 47% 32% 53% 72%;
+  border: 2px solid black;
 }
 
 img {
   border-radius: 5% 2% 7% 3%/ 2% 7% 3% 5%;
   border: 2px solid black;
   margin-bottom: 1em;
+  max-width: 100%;
+}
+
+.pin {
+  position: absolute;
+  width: 60px;
+  height: auto;
+  border: none;
+  left: 47%;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 .info_column {
-  width: 50%;
+  width: calc(50% - 1.6em);
   display: flex;
   flex-direction: column;
+  margin: 0.8em;
+}
+
+.moreInfo {
+  margin-left: 50px;
+}
+.episodesSection,
+.travelsSection {
+  width: 300px;
+  height: 300px;
+  background-color: rgb(251, 233, 67);
+  border-radius: 12px 24px 3px 5px/ 2px 4px 13px 25px;
+  transform: rotate(1deg);
+  font-family: "Nanum Pen Script", cursive;
+  box-shadow: 2px 2px 5px #0008;
+  padding: 2px 20px;
+  overflow: hidden;
+  overflow-y: auto;
   margin: 1em;
+}
+.travelsSection {
+  transform: rotate(-2deg);
+}
+
+.episodesSection > h2,
+.travelsSection > h2 {
+  font-size: xx-large;
+  margin: 0.5em;
+}
+
+.episodesSection-list {
+}
+
+.episodesSection-list > li {
+  font-size: x-large;
+}
+.episodesSection-list > li > a {
+  border: none;
+  cursor: pointer;
+}
+
+.episodesSection-list > li > a:hover,
+.episodesSection-list > li:focus {
+  text-decoration: underline;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  overflow: hidden;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 20px 40px 30px 55px/ 20px 40px 30px 55px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
 }
