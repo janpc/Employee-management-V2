@@ -55,7 +55,7 @@ class CharacterModel extends Model
         $episodesIn = $stmt->fetchAll();
 
         return array_map(function($episode) {
-            return new Episode($episode['id'], $episode['air_date'], $episode['season_no'], $episode['episode_no']);
+            return new Episode($episode['id'],$episode['name'],  $episode['air_date'], $episode['season_no'], $episode['episode_no']);
         }, $episodesIn);
 
     }
