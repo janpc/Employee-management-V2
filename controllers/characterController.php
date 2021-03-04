@@ -18,7 +18,7 @@ class CharacterController extends Controller
         if ($this->view->data) {
             $this->view->render('characters/index');
         } else {
-            ErrorDisplayer::show('Could not get characters');
+            ErrorDisplayer::add('Could not get characters');
         }
     }
 
@@ -28,19 +28,20 @@ class CharacterController extends Controller
         if ($this->view->data) {
             $this->view->render('characters/detail');
         } else {
-            ErrorDisplayer::show('Could not get character');
+            $this->view->render('characters/index');
+            ErrorDisplayer::add('Could not get character with id ' . $params[0]);
         }
     }
 
-    function api($params = null)
+    function api($params, $queries)
     {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'GET': {
-                    if ($params == null) {
-                        $data = $this->characterModel->getAll();
+                    if (isset($queries['id'])) {
+                        $data = $this->characterModel->getById($params[0]);
                         echo json_encode($data);
                     } else {
-                        $data = $this->characterModel->getById($params[0]);
+                        $data = $this->characterModel->getAll();
                         echo json_encode($data);
                     }
                     break;
@@ -57,17 +58,15 @@ class CharacterController extends Controller
                     break;
                 }
             case 'PUT': {
-                    $employeeData = file_get_contents('php://input');
-                    $params = json_decode($employeeData, true);
-                    $this->characterModel->update($params);
+                    $body = file_get_contents('php://input');
+                    $character = json_decode($body, true);
+                    $this->characterModel->update($character);
                     http_response_code(204);
                     break;
                 }
             case 'DELETE': {
-                    if ($params != null) {
-                        $this->characterModel->delete($params[0]);
-                        http_response_code(204);
-                    }
+                    $this->characterModel->delete($queries['id']);
+                    http_response_code(204);
                     break;
                 }
         }

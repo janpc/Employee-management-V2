@@ -100,10 +100,17 @@ abstract class Model
 
     function update($object)
     {
+        echo var_dump($object);
         $arrayToInsert = array();
-        foreach (get_object_vars($object) as $key => $value) {
+        if(is_array($object)) {
+            $iterable = $object;
+        } else {
+            $iterable = get_object_vars($object);
+        }
+
+        foreach ($iterable as $key => $value) {
             if($key == 'id') {
-                continue;
+                $id = $value;
             }
             $snakeKey = Converter::camelToSnakeCase($key);
             $arrayToInsert[$snakeKey] = $value;
@@ -121,7 +128,7 @@ abstract class Model
         $str = substr($str, 0, -1);
 
         try {
-            $stmt = $this->database->prepare("UPDATE $this->table SET $str WHERE id = $object->id");
+            $stmt = $this->database->prepare("UPDATE $this->table SET $str WHERE id = $id");
             foreach($arrayToInsert as $key=>&$value) {
                 $stmt->bindParam(":$key", $value);
             }

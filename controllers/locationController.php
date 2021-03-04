@@ -19,7 +19,8 @@ class LocationController extends Controller
         if ($this->view->data) {
             $this->view->render('locations/index');
         } else {
-            ErrorDisplayer::show('Could not get location');
+            $this->view->render('locations/index');
+            ErrorDisplayer::add('Could not get location');
         }
     }
 
@@ -29,7 +30,8 @@ class LocationController extends Controller
         if ($this->view->data) {
             $this->view->render('locations/detail');
         } else {
-            ErrorDisplayer::show('Could not get location');
+            $this->view->render('locations/index');
+            ErrorDisplayer::add('Could not get location');
         }
     }
 

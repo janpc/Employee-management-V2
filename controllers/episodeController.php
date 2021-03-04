@@ -18,7 +18,7 @@ class EpisodeController extends Controller
         if ($this->view->data) {
             $this->view->render('episodes/index');
         } else {
-            ErrorDisplayer::show('Could not get episodes');
+            ErrorDisplayer::add('Could not get episodes');
         }
     }
 
@@ -28,7 +28,7 @@ class EpisodeController extends Controller
         if ($this->view->data) {
             $this->view->render('episodes/detail');
         } else {
-            ErrorDisplayer::show("Could not get episode");
+            ErrorDisplayer::add("Could not get episode");
         }
     }
 
