@@ -8,7 +8,7 @@
     <title>Travels</title>
     <?php require_once(UTIL . 'htmlLinks.php') ?>
 
-    <script defer src="/employee-management-v2/assets/js/characterGrid.js"></script>
+    <script defer src="/employee-management-v2/assets/js/travelGrid.js"></script>
     <link rel="stylesheet" href="/employee-management-v2/assets/css/characterDashboard.css">';
 </head>
 <body>
@@ -18,7 +18,7 @@
     <img src="https://pngimg.com/uploads/pin/pin_PNG100.png" alt="" class="pin">
         <h2>Travels:</h2>
         <div id="jsGridTravels">
-            <table>
+            <!-- <table>
                 <thead>
                     <tr>
                         <th>Travel number</th>
@@ -43,7 +43,7 @@
                     echo "</tr>";
                     ?>
                 </tbody>
-            </table>
+            </table> -->
         </div>
     </section>
 </body>

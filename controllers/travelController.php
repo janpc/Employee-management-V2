@@ -18,6 +18,45 @@ class TravelController extends Controller{
         }
     }
 
+    function api($params, $queries)
+    {
+        switch ($_SERVER['REQUEST_METHOD']) {
+            case 'GET': {
+                    if (isset($queries['id'])) {
+                        $data = $this->model->getById($params[0]);
+                        echo json_encode($data);
+                    } else {
+                        $data = $this->model->getAllTravelExt();
+                        echo json_encode($data);
+                    }
+                    break;
+                }
+            /* case 'POST': {
+                    if (isset($_POST)) {
+                        $character = json_decode(file_get_contents("php://input"), true);
+                        $data = $this->characterModel->insert($character);
+                        echo json_encode($data);
+                        http_response_code(201);
+                    } else {
+                        http_response_code(400);
+                    }
+                    break;
+                }
+            case 'PUT': {
+                    $body = file_get_contents('php://input');
+                    $character = json_decode($body, true);
+                    $this->characterModel->update($character);
+                    http_response_code(204);
+                    break;
+                }
+            case 'DELETE': {
+                    $this->characterModel->delete($queries['id']);
+                    http_response_code(204);
+                    break;
+                } */
+        }
+    }
+
     /* function renderCharacters($id)
     {
         $this->view->data = $this->model->getCharactersOnTravel($id);
