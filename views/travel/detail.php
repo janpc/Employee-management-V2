@@ -14,10 +14,12 @@
 </head>
 
 <body>
+    
+<?php require_once(ASSETS . 'html/header.html') ?>
 <section class='infoSection'>
         <form action="" method="post" class='infoContainer'>
             <div class='container'>
-                <h2 class="title">Travel: </h2>
+                <h2 class="title">Travel information: </h2>
                 <div class='info_row' id='travel_info'>
                     <div class="img-container">
                         <!-- <img src="\Employee-management-V2\assets\img\travel-bcground.png" alt=""> -->
@@ -25,72 +27,58 @@
                     <div class="travel_info-container">
                         <div class="travel_info-item">
                             <div><label for="origin_loc">Origin:</label></div>
-                            <div><select name="origin_loc" id="origin_loc" data-locationId='1'></select></div>
-                            <!-- -->
+                            <div><a href='<?php echo "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/location/details/' . $this->data->originLoc->id ?>'>
+                                <input type="text" name="origin_loc" id="origin_loc" data-locationId='1' value='<?php echo $this->data->originLoc->name ?>' disabled></a>
+                            </div>
+                                
                         </div>
                         <div class="travel_info-item">
-                            <div><label for="origin_loc">Origin:</label></div>
-                            <div><select name="origin_loc" id="origin_loc" data-locationId='1'></select></div>
+                            <div><label for="origin_loc">Destinatin:</label></div>
+                            <div><a href='<?php echo "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/location/details/' . $this->data->destinationLoc->id ?>'><input type="text" name="origin_loc" id="origin_loc" data-locationId='1' value='<?php echo $this->data->destinationLoc->name ?>' disabled></a></div>
                         </div>
                         <div class="travel_info-item">
-                            <div><label for="origin_loc">Origin:</label></div>
-                            <div><select name="origin_loc" id="origin_loc" data-locationId='1'></select></div>
+                            <div><label for="origin_loc">Episode:</label></div>
+                            <div><a href='<?php echo "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/location/details/' . $this->data->episode->id ?>'>
+                            <input type="text" name="origin_loc" id="origin_loc" data-locationId='1' value='<?php echo $this->data->episode->name ?>' disabled></a></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class='info_row charactersSection'>
             <h2 class="title">Passengers: </h2>
-                <div class="characterCont">
-                    <div class="characterInfo-cont characterInfo-cont-img">
-                        <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="">
+                    <?php
+                    foreach ($this->data->charactersTraveling as $character) {
+                        echo "
+                        <a class='characterCont' href='http://{$_SERVER['SERVER_NAME']}/employee-management-v2/character/details/{$character->id}'>
+                        <div class='characterInfo-cont characterInfo-cont-img'>
+                        <img src=https://rickandmortyapi.com/api/character/avatar/{$character->id}.jpeg alt=''>
                     </div>
-                    <div class="characterInfo-cont characterInfo-cont-info">
-                        <div class="characterInfo-item">
-                            <label for="name">Name:</label>
-                            <input type="text" name="name" id="name" value='NAME' disabled>
+                    <div class='characterInfo-cont characterInfo-cont-info'>
+                        <div class='characterInfo-item'>
+                            <label for='name'>Name:</label>
+                            <input type='text' name='name' id='name' value={$character->name} disabled>
                         </div>
-                        <div class="characterInfo-item">
-                            <label for="status">Status:</label>
-                            <input type="text" name="status" id="status" value='STATUS' disabled>
+                        <div class='characterInfo-item'>
+                            <label for='status'>Status:</label>
+                            <input type='text' name='status' id='status' value={$character->status} disabled>
                         </div>
-                        <div class="characterInfo-item">
-                            <label for="species">Specie:</label>
-                            <input type="text" name="species" id="species" value='SPECIES' disabled>
+                        <div class='characterInfo-item'>
+                            <label for='species'>Specie:</label>
+                            <input type='text' name='species' id='species' value={$character->species} disabled>
                         </div>
-                        <div class="characterInfo-item">
-                            <label for="gender">Gender:</label>
-                            <input type="text" name="gender" id="gender" value='GENDER' disabled>
+                        <div class='characterInfo-item'>
+                            <label for='gender'>Gender:</label>
+                            <input type='text' name='gender' id='gender' value={$character->gender} disabled>
                         </div>
-                    </div>
-                </div>
-                <div class="characterCont">
-                    <div class="characterInfo-cont characterInfo-cont-img">
-                        <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="">
-                    </div>
-                    <div class="characterInfo-cont characterInfo-cont-info">
-                        <div class="characterInfo-item">
-                            <label for="name">Name:</label>
-                            <input type="text" name="name" id="name" value='NAME' disabled>
                         </div>
-                        <div class="characterInfo-item">
-                            <label for="status">Status:</label>
-                            <input type="text" name="status" id="status" value='STATUS' disabled>
-                        </div>
-                        <div class="characterInfo-item">
-                            <label for="species">Specie:</label>
-                            <input type="text" name="species" id="species" value='SPECIES' disabled>
-                        </div>
-                        <div class="characterInfo-item">
-                            <label for="gender">Gender:</label>
-                            <input type="text" name="gender" id="gender" value='GENDER' disabled>
-                        </div>
-                    </div>
-                </div>
+                        </a>
+                    ";
+                    }
+                    ?>
             </div>
         </form>
     </section>
-    <!-- <?php require_once(ASSETS . 'html/header.html') ?>
+    <!-- 
     <section class='infoSection'>
         <form action="" method="post" class='infoContainer'>
             <div class='info_row' id='travel_info'>
@@ -125,7 +113,7 @@
             <ul class='episodesSection-list'>
                 <?php
                 foreach ($this->data->episodes as $episode) {
-                    echo "<li><a href='http://" . $_SERVER['SERVER_NAME'] . "/employee-management-v2/episode/details/" . $episode->id . "'>S$episode->seasonNo E$episode->episodeNo: $episode->name</a></li>";
+                    echo "<li></li>";
                 }
                 ?>
             </ul>

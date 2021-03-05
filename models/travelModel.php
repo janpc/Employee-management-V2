@@ -74,23 +74,17 @@ class TravelModel extends Model
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
             $travelInfo = $stmt->fetch();
-            var_dump($travelInfo);
-            echo "travelinfo" . $travelInfo ;
-            
             $originLoc = new Location($travelInfo['origin_loc_id'], $travelInfo['origin_loc_name'], $travelInfo['origin_loc_type'], $travelInfo['origin_loc_dimension']);
             $destinationLoc = new Location($travelInfo['des_loc_id'], $travelInfo['des_loc_name'], $travelInfo['des_loc_type'], $travelInfo['des_loc_dimension']);
             $episode = new Episode($travelInfo['ep_id'], $travelInfo['ep_name'], $travelInfo['ep_airDate'], $travelInfo['ep_season'], $travelInfo['ep_no']);
             $travelDetail = new Travel ($travelInfo['travel_no'], $originLoc, $destinationLoc, $episode);
 
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute();
             $data = $stmt->fetchAll();
-            print_r($data);
             foreach ($data as $travelPassenger) {
                 $character = new CharacterExt($travelPassenger['charecter_id'], $travelPassenger['charecter_name'], $travelPassenger['charecter_species'], $travelPassenger['charecter_gender']);
                 $travelDetail->setCharacterOnTravel($character);
-                echo "Character: ";
-                print_r($character);
-                echo "Travel: ";
-                print_r($travelDetail);
             }
 
         } catch (PDOException $e) {

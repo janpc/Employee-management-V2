@@ -186,14 +186,15 @@
   .info_row {
       display: flex;
       flex-direction: row;
-      height: max-content;
-      border: 10px solid orange;
   }
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   border-radius: 5% 3% 2% 7% / 7% 3% 5% 2%;
   border: 5px solid black;
+  box-shadow: 2px 2px 5px #0008;
+  padding: 1em;
 }
 
   .travel_info-container {
@@ -201,7 +202,7 @@
       flex-direction: column;
       width: 70%;
       justify-content: space-around;
-      padding: 1em;
+      padding: 0 1em;
   }
   .img-container {
     display: flex;
@@ -212,13 +213,15 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    border-radius: 50%;
 
   }
 
   .travel_info-item {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
+      width: 100%;
   }
 
   .charactersSection {
@@ -235,12 +238,18 @@
   }
   .characterCont {
       display: flex;
-    box-shadow: 2px 2px 5px #0008;
-    width: 90%;
+      height: 150px;
+      box-shadow: 2px 2px 5px #0008;
+      border-radius: 12px 24px 3px 5px/ 2px 4px 13px 25px;
+      width: 90%;
+      margin: 0 auto;
+      justify-content: center;
+      background: url(https://img.freepik.com/foto-gratis/espacio-diseno-papel-textura-fondo_53876-42312.jpg?size=626&ext=jpg&ga=GA1.2.407212201.1603324800);
   }
 .characterInfo-cont{
     display: flex;
     flex-direction: column;
+    height: min-content;
 }
 
 .characterInfo-cont-img {
@@ -256,6 +265,7 @@
 .characterInfo-item {
     display: flex;
     width: 100%;
+    justify-content: space-between;
 
 }
 
@@ -263,10 +273,10 @@
     width: 30%;
 }
 
-.characterInfo-item input, .characterInfo-item select {
+.characterInfo-item input {
     width: 70%;
 }
 
 .title {
-  color: green;
+  margin: 0 auto;
 }

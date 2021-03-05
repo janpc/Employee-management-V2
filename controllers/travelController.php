@@ -59,11 +59,8 @@ class TravelController extends Controller{
 
     function details($params)
     {
-        
-    $this->view->render('travel/detail');
-        //$this->view->data = $this->model->getTravelDetail($params[0]);
+        $this->view->data = $this->model->getTravelDetail($params[0]);
         if ($this->view->data) {
-            //print_r($this->view->data);
             $this->view->render('travel/detail');
         } else {
             ErrorController::renderError("Could not get travel");
