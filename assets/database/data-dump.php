@@ -1,6 +1,6 @@
 <?php
 
-include "db-constants.php";
+include "/opt/lampp/htdocs/employee-management-v2/config/db-constants.php";
 
 // LOCATIONS DUMP
 const LOCATION_URL = "https://rickandmortyapi.com/api/location";

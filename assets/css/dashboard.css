@@ -75,6 +75,10 @@ h2 {
   transform: rotate(-35deg);
 }
 
+.jsgrid-cell {
+  user-select: none;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

@@ -37,13 +37,18 @@ class CharacterController extends Controller
     {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'GET': {
-                    if (isset($queries['id'])) {
-                        $data = $this->characterModel->getById($params[0]);
+                    if(isset($queries['locId'])) {
+                        $data = $this->characterModel->getByResidenceId($queries['locId']);
                         echo json_encode($data);
-                    } else {
-                        $data = $this->characterModel->getAll();
-                        echo json_encode($data);
+                        break;
                     }
+                    if (isset($queries['id'])) {
+                        $data = $this->characterModel->getById($queries['id']);
+                        echo json_encode($data);
+                        break;
+                    }
+                    $data = $this->characterModel->getAll();
+                    echo json_encode($data);
                     break;
                 }
             case 'POST': {

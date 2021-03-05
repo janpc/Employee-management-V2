@@ -9,6 +9,6 @@ window.addEventListener('load', () => {
         })
         setTimeout(() => {
             error.remove();
-        }, 2000)
+        }, 4000)
     }
 })

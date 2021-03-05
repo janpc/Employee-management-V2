@@ -54,9 +54,9 @@ class EpisodeController extends Controller
                     break;
                 }
             case 'PUT': {
-                    $employeeData = file_get_contents('php://input');
-                    $params = json_decode($employeeData, true);
-                    $this->episodeModel->update($params);
+                    $body = file_get_contents('php://input');
+                    $episode = json_decode($body, true);
+                    $this->episodeModel->update($episode);
                     http_response_code(204);
                     break;
                 }
