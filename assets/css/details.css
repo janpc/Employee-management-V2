@@ -117,14 +117,15 @@ img {
   max-width: 100%;
 }
 
-.pin {
+.scotch-tape {
   position: absolute;
-  width: 60px;
+  width: 200px;
   height: auto;
   border: none;
-  left: 47%;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+  left: 37%;
+  top: -70px;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
 }
 
 .info_column {

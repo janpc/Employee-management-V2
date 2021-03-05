@@ -21,6 +21,7 @@ const init = () => {
             name: "id",
             type: "number",
             width: 20,
+            css: "hidden",
             readOnly: true,
             align: "center",
           },
@@ -95,15 +96,30 @@ console.log(data);
           });
         },
 
-      onItemDeleting: function ({ item }) {
-        axios.delete(`${basePath}/api/character`, {
-          params: {
-            id: item.id
-          }
-        }).then(()=>{
-          $("#jsGrid").jsGrid("refresh");
-        });
-      },
+        onItemUpdating: function ({ item }) {
+          data = JSON.stringify(item);
+          axios({
+            method: "PUT",
+            url: `${basePath}/api/character`,
+            data: data,
+          }).then((response) => {
+            if (response.status != 204) {
+              $("#jsGrid").jsGrid("refresh");
+            }
+          });
+        },
+
+        onItemDeleting: function ({ item }) {
+          axios
+            .delete(`${basePath}/api/character`, {
+              params: {
+                id: item.id,
+              },
+            })
+            .then(() => {
+              $("#jsGrid").jsGrid("refresh");
+            });
+        },
 
         onRefreshing: function ({ grid }) {
           axios.get(`${basePath}/api/character`).then(({ data }) => {

@@ -9,24 +9,31 @@
 
     <?php require_once(UTIL . 'htmlLinks.php') ?>
 
-    <link rel="stylesheet" href="/employee-management-v2/assets/css/characterDetails.css">
+    <link rel="stylesheet" href="/employee-management-v2/assets/css/details.css">
     <script defer src="/employee-management-v2/assets/js/characterDetails.js"></script>
 </head>
 
 <body>
     <?php require_once(ASSETS . 'html/header.html') ?>
     <section class='infoSection'>
-        <form action="" method="post" class='infoContainer'>
+        <img src="http://www.clker.com/cliparts/Q/v/Z/T/b/k/scotch-tape.svg" alt="" class="scotch-tape">
+        <form action="" method="post" class='infoContainer' id='infoContainer' data-id='<?php echo $this->data->id ?>'>
             <div class='info_column'>
                 <img src="https://rickandmortyapi.com/api/character/avatar/<?php echo $this->data->id ?>.jpeg" alt="">
-                <label for="origin_loc">Origin:</label>
-                <div>
-                    <select name="origin_loc" id="origin_loc" data-locationId='<?php echo $this->data->originLoc->id; ?>'></select>
-                    <a type="text" href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/location/details/' . $this->data->originLoc->id ?>">Go!</a>
-                </div>
+                <?php 
+                    if($this->data->originLoc->id) {
+                        echo "
+                        <label for='origin_loc'>Origin:</label>
+                        <div>
+                            <select name='origin_loc_id' id='origin_loc' data-locationId= " . $this->data->originLoc->id  . "></select>
+                            <a type='text' href='http://" . $_SERVER['SERVER_NAME'] . "/employee-management-v2/location/details/ " . $this->data->originLoc->id . "'>Go!</a>
+                        </div>";
+                    }
+                ?>
+            
                 <label for="last_loc">Last Seen:</label>
                 <div>
-                    <select name="last_loc" id="last_loc" data-locationId='<?php echo $this->data->lastLoc->id; ?>'></select>
+                    <select name="last_loc_id" id="last_loc" data-locationId='<?php echo $this->data->lastLoc->id; ?>'></select>
                     <a type="text" href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . '/employee-management-v2/location/details/' . $this->data->lastLoc->id ?>">Go!</a>
                 </div>
             </div>

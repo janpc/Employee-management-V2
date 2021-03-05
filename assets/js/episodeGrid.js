@@ -16,6 +16,7 @@ const init = () => {
       fields: [
         {
           name: "id",
+          css: "hidden",
           type: "number",
           width: 20,
           readOnly: true,
@@ -61,7 +62,7 @@ const init = () => {
 
         axios({
           method: "POST",
-          url: `${basePath}/api/character`,
+          url: `${basePath}/api/episode`,
           data: data,
         }).then(() => {
           $("#jsGrid").jsGrid("refresh");
@@ -72,7 +73,7 @@ const init = () => {
         data = JSON.stringify(item);
         axios({
           method: "PUT",
-          url: `${basePath}/api/character`,
+          url: `${basePath}/api/episode`,
           data: data,
         }).then((response) => {
           if (response.status != 204) {
@@ -84,7 +85,7 @@ const init = () => {
       onItemDeleting: function ({ item }) {
         axios({
           method: "DELETE",
-          url: `${basePath}/api/character/${item.id}`,
+          url: `${basePath}/api/episode/${item.id}`,
         }).then(() => {
           $("#jsGrid").jsGrid("refresh");
         });
