@@ -8,8 +8,6 @@
     align-items: top;
     justify-content: space-between;
     background: transparent;
-    background-size: cover;
-    background-position: bottom;
     font-family: "Nanum Pen Script", cursive;
     color:rgb(138, 211, 28);
 }

@@ -20,7 +20,7 @@
         <form action="" method="post" class='infoContainer' id='infoContainer' data-id='<?php echo $this->data->id ?>'>
             <div class='info_column'>
                 <img src="https://rickandmortyapi.com/api/character/avatar/<?php echo $this->data->id ?>.jpeg" alt="">
-                <?php 
+                <?php
                     if($this->data->originLoc->id) {
                         echo "
                         <label for='origin_loc'>Origin:</label>
@@ -30,7 +30,6 @@
                         </div>";
                     }
                 ?>
-            
                 <label for="last_loc">Last Seen:</label>
                 <div>
                     <select name="last_loc_id" id="last_loc" data-locationId='<?php echo $this->data->lastLoc->id; ?>'></select>
