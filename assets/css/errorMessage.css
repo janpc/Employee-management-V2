@@ -1,21 +1,41 @@
 
 .error-messages {
     position: fixed;
-    top: 0;
+    top: -200px;
     left: 0;
     width: 100%;
+    height: fit-content;
     padding: 30px 20px;
+    padding-bottom: 80px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
-    background-color: black;
-    color: white;
+    background: url('../img/ripped.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    color: black;
+    font-size: xx-large;
+    transition: top 1s ease-in-out;
 }
 
 .error-close {
-    position: fixed;
+    position: absolute;
     top: 0;
-    padding: 30px 20px;
-    right: 30px;
+    margin: 30px 20px;
+    right: 100px;
+    background-color: transparent;
+    border: 2px solid transparent;
+    font-family: "Nanum Pen Script", cursive;
+    font-size: xx-large;
+    border-radius: 37% 83% 45% 62% / 47% 32% 72% 53% ;
+    cursor: pointer;
+    outline: none;
+    
 }
+
+.error-close:hover, .error-close:focus{
+    border: 2px solid black;
+}
+

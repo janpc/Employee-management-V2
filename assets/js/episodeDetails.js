@@ -12,5 +12,5 @@ $infoContainer.addEventListener("submit", (event) => {
       method: "PUT",
       url: `${basePath}/api/episode`,
       data: data,
-    });
+    }).then(location.replace(`${basePath}/episode`));
   });
