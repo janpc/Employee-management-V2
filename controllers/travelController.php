@@ -6,7 +6,7 @@ class TravelController extends Controller{
 
     function __construct () {
         parent::__construct();
-        $this->model = new TravelModel ();
+        $this->model = new TravelModel;
     }
     function render()
     {
@@ -23,7 +23,7 @@ class TravelController extends Controller{
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'GET': {
                     if (isset($queries['id'])) {
-                        $data = $this->model->getById($params[0]);
+                        $data = $this->model->getAllTravelExt();
                         echo json_encode($data);
                     } else {
                         $data = $this->model->getAllTravelExt();
@@ -54,6 +54,19 @@ class TravelController extends Controller{
                     http_response_code(204);
                     break;
                 } */
+        }
+    }
+
+    function details($params)
+    {
+        
+    $this->view->render('travel/detail');
+        //$this->view->data = $this->model->getTravelDetail($params[0]);
+        if ($this->view->data) {
+            //print_r($this->view->data);
+            $this->view->render('travel/detail');
+        } else {
+            ErrorController::renderError("Could not get travel");
         }
     }
 
@@ -93,14 +106,6 @@ class TravelController extends Controller{
             ErrorController::renderError('Could not get travel');
         }
     } */
-    /* function details($params)
-    {
-        $this->view->data = $this->model->getById($params[0]);
-        if ($this->view->data) {
-            $this->view->render('episodes/detail');
-        } else {
-            ErrorController::renderError("Could not get travel");
-        }
-    } */
+
 }
 

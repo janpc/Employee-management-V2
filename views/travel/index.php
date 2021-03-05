@@ -1,4 +1,3 @@
-// travel index
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +8,13 @@
     <?php require_once(UTIL . 'htmlLinks.php') ?>
 
     <script defer src="/employee-management-v2/assets/js/travelGrid.js"></script>
-    <link rel="stylesheet" href="/employee-management-v2/assets/css/characterDashboard.css">';
+    <link rel="stylesheet" href="/employee-management-v2/assets/css/dashboard.css">';
 </head>
 <body>
     <?php require_once(ASSETS . 'html/header.html') ?>
     <section class='gridContainer'>
-    <img src="https://pngimg.com/uploads/pin/pin_PNG100.png" alt="" class="pin">
-    <img src="https://pngimg.com/uploads/pin/pin_PNG100.png" alt="" class="pin">
+    <!-- <img src="http://www.clker.com/cliparts/Q/v/Z/T/b/k/scotch-tape.svg" alt="" class="scotch-tape"> -->
+
         <h2>Travels:</h2>
         <div id="jsGridTravels">
             <!-- <table>
@@ -29,19 +28,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    foreach ($this->data as $travel) {
-                        echo "<tr>
-                        <td><a href=>{$travel->id}</a></td>
-                        <td><a href=>{$travel->episode->name}</a></td>
-                        <td><a href=>{$travel->originLoc->name}</a></td>
-                        <td><a href=>{$travel->destinationLoc->name}</a></td>";
-                    foreach ($travel->charactersTraveling as $character) {
-                        echo "<td><a href=>{$character->name}</a></td>";
-                    }
-                    }
-                    echo "</tr>";
-                    ?>
+                //    <?php
+                //    foreach ($this->data as $travel) {
+                //        echo "<tr>
+                //        <td><a href=>{$travel->id}</a></td>
+                //        <td><a href=>{$travel->episode->name}</a></td>
+                //        <td><a href=>{$travel->originLoc->name}</a></td>
+                //        <td><a href=>{$travel->destinationLoc->name}</a></td>";
+                //    foreach ($travel->charactersTraveling as $character) {
+                //        echo "<td><a href=>{$character->name}</a></td>";
+                //    }
+                //    }
+                //    echo "</tr>";
+                //    ?>
                 </tbody>
             </table> -->
         </div>

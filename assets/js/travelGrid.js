@@ -2,6 +2,7 @@ const basePath = "http://localhost/employee-management-v2";
 
 const init = () => {
   axios.get(`${basePath}/api/travel`).then(({ data }) => {
+    
       $("#jsGridTravels").jsGrid({
         width: "85vw",
         height: "65vh",
@@ -15,62 +16,16 @@ const init = () => {
 
         fields: [
           {
+            title: "Travel no",
             name: "id",
             type: "number",
             width: 20,
             readOnly: true,
             align: "center",
           },
-          { name: "name", type: "text", width: 60, validate: "required" },
-          {
-            name: "status",
-            type: "select",
-            items: [
-              { Name: "Alive", Value: "Alive" },
-              { Name: "Dead", Value: "Dead" },
-              { Name: "Unknown", Value: "unknown" },
-            ],
-            valueField: "Value",
-            textField: "Name",
-            width: 40,
-            validate: "required",
-            valueType: "string",
-          },
-          { name: "species", type: "text", width: 40, validate: "required" },
-          {
-            name: "gender",
-            type: "select",
-            items: [
-              { Name: "Female", Value: "Female" },
-              { Name: "Male", Value: "Male" },
-              { Name: "Genderless", Value: "Genderless" },
-              { Name: "Unknown", Value: "unknown" },
-            ],
-            valueField: "Value",
-            textField: "Name",
-            width: 40,
-            validate: "required",
-          },
-          {
-            name: "originLocId",
-            type: "select",
-            items: locations,
-            valueField: "id",
-            textField: "name",
-            width: 60,
-            validate: "required",
-            align: "center",
-          },
-          {
-            name: "lastLocId",
-            type: "select",
-            items: locations,
-            valueField: "id",
-            textField: "name",
-            width: 60,
-            validate: "required",
-            align: "center",
-          },
+          { title: "Episode", name: "episode.name", type: "text", width: 60, validate: "required" },
+          { title: "Origin location", name: "originLoc.name", type: "text", width: 60, validate: "required" },
+          { title: "Target location", name: "destinationLoc.name", type: "text", width: 60, validate: "required" },
           { type: "control" },
         ],
 
@@ -107,11 +62,11 @@ const init = () => {
             grid.data = data;
           });
         },
-/* 
+
         rowClick: function (args) {},
         rowDoubleClick: function ({ item }) {
-          window.location.href = `${basePath}/character/details/${item.id}`;
-        }, */
+          window.location.href = `${basePath}/travel/details/${item.id}`;
+        },
       });
   });
 };

@@ -1,16 +1,16 @@
 <?php
 
 class Travel {
-    public Int $id;
+    public ?Int $id;
     //public Int $episodeId;
     //public Int $originLocId;
     //public Int $destinationLocId;
-    public Episode $episode;
-    public Location $originLoc;
-    public Location $destinationLoc;
-    public $charactersTraveling = array();
+    public ?Episode $episode;
+    public ?Location $originLoc;
+    public ?Location $destinationLoc;
+    public ?array $charactersTraveling = array();
 
-    public function __construct($id, $originLoc, $destinationLoc, $episode)
+    public function __construct($id = null, $originLoc = null, $destinationLoc = null, $episode = null)
     {
         $this->id = $id;
         $this->originLoc = $originLoc;
