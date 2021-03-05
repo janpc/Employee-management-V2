@@ -4,6 +4,7 @@ const init = () => {
   axios.get(`${basePath}/api/location`).then(({ data }) => {
     const locations = data;
     axios.get(`${basePath}/api/character`).then(({ data }) => {
+      console.log(data);
       $("#jsGrid").jsGrid({
         width: "85vw",
         height: "65vh",
@@ -85,7 +86,7 @@ const init = () => {
               data[key] = value;
             }
           });
-
+console.log(data);
           axios({
             method: "POST",
             url: `${basePath}/api/character`,
